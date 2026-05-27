@@ -1,0 +1,76 @@
+{
+  "_comment": "Sterile example earnings calendar. Maintain dates + sessions + confidence flags for universe names. Personal-state fields (held, shares, portfolio-specific notes) are intentionally omitted; manage those in portfolio.json / event_trades.json.",
+  "calendar_window": "YYYY-MM-DD through YYYY-MM-DD",
+  "last_updated": "YYYY-MM-DD",
+  "confidence_levels": {
+    "confirmed": "Date verified via company IR or recent press; high confidence",
+    "estimated": "Inferred from quarterly cadence; ±5 days accuracy",
+    "unconfirmed": "Could not verify; placeholder pending search / IR check"
+  },
+  "calendar_q2_2026_reporters_first_print_window": [
+    {"date": "2026-04-30", "ticker": "LLY", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-04-30", "ticker": "RDDT", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": false, "note": "not in watchlist"},
+    {"date": "2026-04-30", "ticker": "RBLX", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": false, "note": "not in watchlist"},
+    {"date": "2026-04-30", "ticker": "SNDK", "session": "AMC", "period": "Q3 FY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-04-30", "ticker": "005930.KS", "session": "Pre-market US", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true, "note": "Samsung Electronics. HBM4 commentary is a high-signal cross-read for memory-cycle thesis."},
+    {"date": "2026-05-04", "ticker": "PLTR", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-05-05", "ticker": "AMD", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-05-05", "ticker": "ANET", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-05-05", "ticker": "LITE", "session": "AMC", "period": "Q3 FY26", "confidence": "confirmed", "watchlist": true, "note": "Example: PASS verdict from a prior dossier; tracked as universe but not actionable."},
+    {"date": "2026-05-06", "ticker": "COHR", "session": "AMC", "period": "Q3 FY26", "confidence": "confirmed", "watchlist": true, "note": "Example: Tier 1 de-risking setup candidate (4/5 score on a prior daily run)."},
+    {"date": "2026-05-06", "ticker": "APP", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true, "note": "Example event-trade candidate. Pre-committed exit rules belong in event_trades.json, not here."},
+    {"date": "2026-05-06", "ticker": "KTOS", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-05-06", "ticker": "UBER", "session": "BMO", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": false, "note": "off-theme"},
+    {"date": "2026-05-07", "ticker": "VST", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-05-07", "ticker": "MP", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-05-07", "ticker": "IREN", "session": "AMC", "period": "Q3 FY26", "confidence": "confirmed", "watchlist": true, "note": "Example: PASS verdict from a prior dossier."},
+    {"date": "2026-05-07", "ticker": "CEG", "session": "BMO", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": true, "note": "Example: high-quality de-risking setup candidate (down 30% from prior peak)."},
+    {"date": "2026-05-08", "ticker": "COIN", "session": "AMC", "period": "Q1 CY26", "confidence": "confirmed", "watchlist": false, "note": "Example: sector-sentiment-bearish (peer just missed)."},
+    {"date": "2026-05-04", "ticker": "FN", "session": "AMC", "period": "Q3 FY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-05-13", "ticker": "CIFR", "session": "BMO", "period": "Q1 CY26", "confidence": "estimated", "watchlist": true},
+    {"date": "2026-05-27", "ticker": "NVDA", "session": "AMC", "period": "Q1 FY27", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-06-04", "ticker": "CIEN", "session": "BMO", "period": "Q2 FY26", "confidence": "confirmed", "watchlist": true},
+    {"date": "2026-06-03", "ticker": "AVGO", "session": "AMC", "period": "Q2 FY26", "confidence": "confirmed", "watchlist": false, "note": "Example: confirmed direct from company IR; supersedes prior aggregator-derived estimate."},
+    {"date": "2026-06-23", "ticker": "AVAV", "session": "AMC", "period": "Q4 FY26", "confidence": "estimated", "watchlist": true, "note": "Example: WAIT verdict from a prior dossier; decision moment is the print itself."},
+    {"date": "2026-07-01", "ticker": "MU", "session": "AMC", "period": "Q3 FY26", "confidence": "confirmed", "watchlist": true, "note": "Example date correction: prior calendar had 06-24 (aggregator estimate). Confirmed 07-01 via Investing.com + TipRanks."}
+  ],
+  "calendar_q3_2026_reporters_estimated_window": [
+    {"date_window": "2026-07-22 to 2026-07-30", "ticker_group": "Mag 7 + GOOG + TSLA + LLY", "tickers_in_universe": ["GOOG", "LLY", "TSLA"], "session_typical": "AMC", "period": "Q2 CY26", "confidence": "estimated"},
+    {"date_window": "2026-07-23", "ticker": "INTC", "session": "AMC", "period": "Q2 CY26", "confidence": "confirmed"},
+    {"date_window": "2026-07-22 to 2026-08-07", "ticker_group": "AI semis", "tickers_in_universe": ["AMD", "ANET", "APP", "QCOM", "ARM"], "period": "Q2 CY26", "confidence": "estimated"},
+    {"date_window": "2026-07-22 to 2026-08-07", "ticker_group": "AI power", "tickers_in_universe": ["VST", "BE", "EQT", "CEG", "VRT"], "period": "Q2 CY26", "confidence": "estimated"},
+    {"date_window": "2026-08-04 to 2026-08-12", "ticker_group": "Defense / Materials", "tickers_in_universe": ["KTOS", "MP"], "period": "Q2 CY26", "confidence": "estimated"},
+    {"date_window": "2026-08-04 to 2026-08-12", "ticker_group": "AI optics", "tickers_in_universe": ["LITE", "COHR", "CIEN", "FN"], "period": "Fiscal varies", "confidence": "estimated"},
+    {"date_window": "2026-08-19 to 2026-08-26", "ticker": "NVDA", "session": "AMC", "period": "Q2 FY27", "confidence": "estimated"},
+    {"date_window": "2026-09-22 to 2026-09-28", "ticker": "MU", "session": "AMC", "period": "Q4 FY26", "confidence": "estimated"}
+  ],
+  "calendar_q4_2026_reporters_estimated_window": [
+    {"date_window": "2026-10-21 to 2026-10-30", "ticker_group": "Mag 7 + AI semis Q3 prints", "tickers_in_universe": ["GOOG", "LLY", "TSLA", "AMD", "QCOM"], "period": "Q3 CY26"},
+    {"date_window": "2026-10-28", "ticker": "INTC", "session": "AMC", "period": "Q3 CY26", "confidence": "estimated"},
+    {"date_window": "2026-11-03 to 2026-11-12", "ticker_group": "Misc", "tickers_in_universe": ["ANET", "APP", "VST", "BE", "EQT", "CEG", "MP", "KTOS", "AVAV"], "period": "Q3 CY26 / fiscal varies"},
+    {"date_window": "2026-11-18 to 2026-11-25", "ticker": "NVDA", "session": "AMC", "period": "Q3 FY27", "confidence": "estimated"},
+    {"date_window": "2026-12-15 to 2026-12-22", "ticker": "MU", "session": "AMC", "period": "Q1 FY27", "confidence": "estimated"}
+  ],
+  "remaining_2026_print_cycles_per_universe_name": {
+    "_comment": "Reference cadence per universe name across the rest of CY2026. Helps planning multi-quarter thesis tracking.",
+    "GOOG": "Q2 CY26 (~late Jul) + Q3 CY26 (~late Oct)",
+    "APLD": "Q4 FY26 (~Aug 2026), Q1 FY27 (~Nov 2026)",
+    "BE": "Q2 CY26 (~late Jul) + Q3 CY26 (~late Oct)",
+    "AVGO": "Q2 FY26 (~mid Jun) + Q3 FY26 (~mid Sep) + Q4 FY26 (~mid Dec)",
+    "EQT": "Q2 CY26 (~late Jul) + Q3 CY26 (~late Oct)",
+    "KTOS": "Q1 CY26 05-06 + Q2 CY26 (~early Aug) + Q3 CY26 (~early Nov)",
+    "MU": "Q3 FY26 07-01 + Q4 FY26 (~late Sep) + Q1 FY27 (~mid Dec)",
+    "MP": "Q1 CY26 05-07 + Q2 CY26 (~early Aug) + Q3 CY26 (~early Nov)",
+    "NVDA": "Q1 FY27 05-27 + Q2 FY27 (~late Aug) + Q3 FY27 (~mid Nov)",
+    "VST": "Q1 CY26 05-07 + Q2 CY26 (~early Aug) + Q3 CY26 (~early Nov)",
+    "APP": "Q1 CY26 05-06 + Q2 CY26 (~early Aug) + Q3 CY26 (~early Nov)"
+  },
+  "data_gaps_to_fill": [
+    "ARM Q1 FY27 date (next print after Apr 8 Q4 FY26)",
+    "MRVL Q1 FY27 date (last printed Q4 FY26 in Apr; next late May / early Jun)",
+    "QCOM Q3 FY26 date (last printed Q2 04-29; next late Jul)",
+    "CIFR exact Q1 2026 date",
+    "Smaller names: SITM, KEYS, FEIM, TSEM, ON, AAOI, SMTC, MTSI, TTMI",
+    "International tickers (e.g. 5801.T, 7220.T, Chinese 300xxx) often report biannually"
+  ]
+}

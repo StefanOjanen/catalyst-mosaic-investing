@@ -1,0 +1,67 @@
+{
+  "_comment": "TEMPLATE — copy to tranches.json and populate with your actual positions. Tranche classification defines exit logic per holding.",
+  "last_updated": "YYYY-MM-DD",
+  "last_source": "Brief reconciliation note.",
+  "framework": {
+    "tranche_types": {
+      "thematic_core": "Long-horizon position (multi-quarter to multi-year). Sized to thesis confidence. Hold through noise; only trim on thesis break or extreme overweight.",
+      "event_trade": "Pre-positioned for a specific catalyst (earnings, regulatory, contract). Sized larger than thematic-core target. Exit-by-rule after catalyst resolves (see event_trades.json).",
+      "catalyst_concentration_overlay": "Catalyst-specific position add on TOP of thematic_core. Sized aggressively (often breaching single-name caps). Exit-by-pre-committed rule mechanically post-catalyst.",
+      "tactical_swing": "Short-cycle position based on sentiment / technical / sector rotation. Hard time-stop (e.g., 30 days)."
+    },
+    "default_exit_logic": {
+      "thematic_core": "Don't trim on news that confirms the thesis. Trim on thesis break or if weight exceeds 1.5× target.",
+      "event_trade": "Trim 50–70% into post-catalyst gap-up; full exit on miss; see event_trades.json for rules per trade.",
+      "catalyst_concentration_overlay": "Mechanical execution per pre-committed scenario matrix in event_trades.json. NO discretionary deviation.",
+      "tactical_swing": "Hard time-stop, ATR-based exits, accept choppy P&L."
+    }
+  },
+  "tranche_classification": {
+    "EXAMPLE_A": {
+      "tranche_type": "thematic_core",
+      "thematic_target_weight_pct": 8,
+      "current_weight_pct": 7.18,
+      "thesis_horizon": "multi-year",
+      "thesis_short": "Brief 1-line thesis statement",
+      "thesis_break_triggers": [
+        "Concrete observable that would invalidate the thesis (e.g., 'GM compression below X%')",
+        "Customer concentration loss (e.g., 'lose hyperscaler X')",
+        "Industry-level event (e.g., 'major competitor in-house silicon launch at scale')"
+      ],
+      "note": "Free-text history / state notes."
+    },
+    "EXAMPLE_C": {
+      "tranche_type": "event_trade_pre_event",
+      "thematic_core_target_pct": 0,
+      "current_weight_pct": 6.47,
+      "thesis_horizon": "binary_event_YYYY-MM-DD",
+      "thesis_short": "Why this is pre-positioned for the catalyst",
+      "thesis_break_triggers": ["Pre-print sentiment break", "Print: specific metric miss"],
+      "current_event_trade_ref": "EXAMPLE_C-YYYY-MM-DD in event_trades.json",
+      "post_event_default": "Per pre-committed exit rules. Default = full exit by Friday post-print. Optional thematic core conversion only if thesis case persists."
+    }
+  },
+  "exited_positions_log": [
+    {
+      "ticker": "EXAMPLE_X",
+      "exit_date": "YYYY-MM-DD",
+      "exit_price_usd": 0,
+      "shares_exited": 0,
+      "proceeds_eur": 0,
+      "realized_pnl_eur": 0,
+      "exit_rationale": "Why the position was exited — thesis break / capital reallocation / drawdown tier breach / catalyst out of window / etc."
+    }
+  ],
+  "concentration_targets_summary": {
+    "single_largest_max": 20,
+    "single_thematic_cluster_max_pct_of_equity": 60,
+    "current_clusters": {
+      "ai_compute_semis": { "names": ["EXAMPLE_A"], "current_pct": 7.18, "target_pct": 50 },
+      "ai_power": { "names": ["EXAMPLE_B"], "current_pct": 8.04, "target_pct": 25 },
+      "mega_cap_ai_platform": { "names": [], "current_pct": 0, "target_pct": 10 },
+      "critical_materials_defense": { "names": [], "current_pct": 0, "target_pct": 8 },
+      "event_trade_overlay": { "names": ["EXAMPLE_C"], "current_pct": 6.47, "target_pct": 0 }
+    },
+    "note": "Free-text concentration narrative. Flag intentional cap breaches vs unintentional drift."
+  }
+}

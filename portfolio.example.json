@@ -1,0 +1,101 @@
+{
+  "_comment": "TEMPLATE — copy to portfolio.json and replace placeholder values with your actual book. Never commit your real portfolio.json (it's in .gitignore).",
+  "base_currency": "EUR",
+  "broker": "<your broker, e.g., Danske Bank / Interactive Brokers>",
+  "account": "<account name / type, e.g., taxable / OSK / ISA>",
+  "last_updated": "YYYY-MM-DD",
+  "last_source": "Brief note on how this snapshot was reconciled (broker screenshot, trade confirmation paste, etc.)",
+  "fx_snapshot": { "USD_EUR": 1.16 },
+  "totals": {
+    "market_value_equities_eur": 30000.00,
+    "cash_eur": 1500.00,
+    "total_book_eur": 31500.00,
+    "cost_basis_total_eur": 27000.00,
+    "unrealized_pnl_eur": 3000.00,
+    "unrealized_pnl_pct_on_cost": 11.11,
+    "realized_pnl_ytd_eur_estimate": 500.00,
+    "realized_pnl_ytd_note": "Sum of realized gains/losses YTD. Update from trades.log.jsonl.",
+    "note": "Free-text reconciliation notes go here. E.g., stale-price view vs live view, recent settlement events."
+  },
+  "cash": {
+    "eur_total": 1500.00,
+    "components_note": "How the cash position was derived. E.g., 'Post most-recent buy = settled cash €X − €Y deployed = €Z'."
+  },
+  "holdings": [
+    {
+      "ticker": "EXAMPLE_A",
+      "name": "Example AI-infra holding",
+      "shares": 10,
+      "price_local": 250.00,
+      "price_ccy": "USD",
+      "market_value_eur": 2155.00,
+      "weight_pct_of_equity": 7.18,
+      "weight_pct_of_total": 6.84,
+      "unrealized_pnl_eur": 350.00,
+      "unrealized_pnl_pct": 19.41,
+      "cost_basis_eur": 1805.00,
+      "avg_cost_per_share_eur": 180.50,
+      "on_watchlist": true,
+      "theme": ["ai-infra", "semis"],
+      "tranche": "thematic_core",
+      "history": "Optional: brief lifecycle notes (initiated date, any trims/adds, realized P&L on partial exits).",
+      "thesis_flag_note": "Optional: active thesis-break trigger status if any are partially hit.",
+      "next_catalyst": "Q2 earnings ~late Jul 2026"
+    },
+    {
+      "ticker": "EXAMPLE_B",
+      "name": "Example AI-power holding",
+      "shares": 20,
+      "price_local": 140.00,
+      "price_ccy": "USD",
+      "market_value_eur": 2413.00,
+      "weight_pct_of_equity": 8.04,
+      "weight_pct_of_total": 7.66,
+      "unrealized_pnl_eur": -180.00,
+      "unrealized_pnl_pct": -6.94,
+      "cost_basis_eur": 2593.00,
+      "avg_cost_per_share_eur": 129.65,
+      "on_watchlist": false,
+      "theme": ["ai-power", "independent-power"],
+      "tranche": "thematic_core",
+      "next_catalyst": "Q2 earnings + PPA news ~early Aug 2026"
+    },
+    {
+      "ticker": "EXAMPLE_C",
+      "name": "Example event-trade position (pre-print catalyst)",
+      "shares": 5,
+      "price_local": 450.00,
+      "price_ccy": "USD",
+      "market_value_eur": 1940.00,
+      "weight_pct_of_equity": 6.47,
+      "weight_pct_of_total": 6.16,
+      "unrealized_pnl_eur": 60.00,
+      "unrealized_pnl_pct": 3.19,
+      "cost_basis_eur": 1880.00,
+      "avg_cost_per_share_eur": 376.00,
+      "on_watchlist": true,
+      "theme": ["ai-ad-tech", "event-trade"],
+      "tranche": "event_trade_pre_event",
+      "active_event_trade_ref": "EXAMPLE_C-YYYY-MM-DD in event_trades.json",
+      "next_catalyst": "Q1 earnings YYYY-MM-DD AMC — binary event"
+    }
+  ],
+  "concentration": {
+    "ai_compute_semis_pct_of_equity": 35.0,
+    "ai_compute_semis_components": "EXAMPLE_A 7 + ...",
+    "ai_power_pct_of_equity": 22.0,
+    "ai_power_components": "EXAMPLE_B 8 + ...",
+    "mega_cap_ai_platform_pct_of_equity": 10.0,
+    "critical_materials_defense_pct_of_equity": 5.0,
+    "event_trade_overlay_pct_of_equity": 6.5,
+    "total_ai_theme_pct_of_equity": 80.0,
+    "cash_pct_of_total_book": 4.76,
+    "single_largest_position_pct_of_equity": 8.04,
+    "single_largest_position": "EXAMPLE_B",
+    "memory_cluster_pct_of_equity": 0,
+    "note": "Free-text concentration summary. Flag any cap breaches and rationale (deliberate catalyst trade vs unintentional drift)."
+  },
+  "earnings_wall": {
+    "wk_X": "Names printing in the next several weeks with €-exposure on each (binary risk highlight)"
+  }
+}

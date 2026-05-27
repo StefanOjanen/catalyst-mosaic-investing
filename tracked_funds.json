@@ -1,0 +1,162 @@
+{
+  "purpose": "Funds whose 13F holdings + quarter-over-quarter deltas should be tracked as a supplementary signal layer in /invest_daily Worker B and /invest:weekly synthesis. NOT a primary trade driver — 45-day filing lag means signals are months stale by the time they're public; use for thesis triangulation and idea sourcing, not execution timing.",
+  "fund_selection_rationale": "User-suggested list (Berkshire, Bridgewater, Rentec, Citadel, Two Sigma) intentionally NOT adopted wholesale (per 2026-05-17 framework upgrade). Rentec/Citadel/Two Sigma are HFT/quant — 13F snapshots are positions inventory, not directional bets; turnover obscures signal. Bridgewater is macro/ETF-heavy and Berkshire is famously slow + AAPL-concentrated. Instead, the tracked-fund cohort prioritizes managers whose strategy (concentrated tech/AI thematic) aligns with this book's themes. Berkshire kept as the 'old-money sentiment on tech' reference; rest are AI/tech-specialist concentrated allocators where 13F gives real directional read.",
+  "tracked_funds": [
+    {
+      "id": "situational-awareness-lp",
+      "name": "Situational Awareness LP",
+      "manager": "Leopold Aschenbrenner",
+      "cik": "TBD — verify on next SEC EDGAR query",
+      "aum_usd": 5500000000,
+      "aum_note": "Per Feb 11, 2026 13F (Q4 2025 holdings). Grew from ~$225M launch (mid-2024) → $5.5B in ~18 months — combination of returns + new LP capital.",
+      "strategy_summary": "Concentrated long-only US equity, top 10 ≈ 86% of book, themes: AI infrastructure (compute, memory, storage), AI power, optical interconnect, Bitcoin-miner-AI-pivot neoclouds. Manager wrote 'Situational Awareness: The Decade Ahead' (2024).",
+      "filing_cadence": {
+        "Q1": "Filed ~mid-May (e.g. 05-15 deadline)",
+        "Q2": "Filed ~mid-August (~08-14 deadline)",
+        "Q3": "Filed ~mid-November (~11-14 deadline)",
+        "Q4": "Filed ~mid-February (e.g. 02-15 deadline)"
+      },
+      "track_record_summary": "Reported triple-digit annualized returns since launch. Major drivers: BE +176%, SNDK +816%, plus AI-neocloud basket (CORZ, RIOT, IREN, BTDR, HUT, APLD).",
+      "caveats": [
+        "45-day 13F lag means signal is stale on entry timing",
+        "13F captures only long US equities — misses shorts, options, international, private",
+        "Concentration of returns from 2 names (BE+SNDK) may not be replicable; PR-flavored",
+        "Sample size ~18 months in a uniquely strong AI bull regime — beta vs alpha uncertain",
+        "Heavy thematic overlap with concentrated AI-infra books = thesis validation, not new alpha for already-held names"
+      ],
+      "data_sources_priority_order": [
+        "https://www.sec.gov/cgi-bin/browse-edgar — primary (CIK-keyed)",
+        "https://whalewisdom.com/filer/situational-awareness-lp — aggregator, clean delta view",
+        "https://hedgefollow.com/funds/Situational+Awareness — aggregator, holdings history",
+        "https://www.insidermonkey.com/hedge-fund/situational+awareness+lp/1581/ — aggregator"
+      ],
+      "latest_known_top_holdings_q1_2026": [
+        {"ticker": "BE", "note": "Continues as largest equity position; long-only thematic core"},
+        {"ticker": "APLD", "delta": "ADDED", "note": "Confirmation on AI-DC landlord thesis"},
+        {"ticker": "IREN", "delta": "ADDED", "note": "Continued accumulation despite Q3 miss + dilution. Worth re-evaluating prior PASS verdicts if held."},
+        {"ticker": "CRWV", "delta": "ADDED", "note": "Example of a name a user may have permanently excluded on tech-quality grounds; honor hard exclusions regardless of tracked-fund signal."},
+        {"ticker": "RIOT", "delta": "ADDED", "note": "BTC-to-AI basket continued accumulation"},
+        {"ticker": "CleanSpark", "delta": "NEW", "note": "BTC-to-AI peer; new addition to the fund's book this quarter; candidate for scout_monitor tier in universe.json"},
+        {"ticker": "TE", "name": "T1 Energy", "delta": "NEW", "shares": 10000000, "approx_position_usd": 60000000, "approx_pct_of_aum": 1.5, "note": "US solar module manufacturer (FREYR rebrand post-Trina Texas factory acquisition). 5 GW G1_Dallas operational + 2.1 GW G2_Austin under construction. Q1 2026 first profitable quarter. ~$1.6B mcap. IRA 45X tax credit eligible. Solar exposure that closes a gap in the AI-power thematic cluster."},
+        {"ticker": "LITE", "note": "Continues from Q4 2025"},
+        {"ticker": "INTC calls", "note": "Call position continues"},
+        {"ticker": "CRWV calls", "note": "Call position continues"},
+        {"ticker": "SNDK calls", "delta": "NEW", "note": "New call position on SanDisk; confirmation signal for NAND-cycle longs"},
+        {"ticker": "TSM calls", "delta": "NEW", "note": "Paired with TSM puts — likely strangle/vol structure not directional"}
+      ],
+      "q1_2026_exits": ["CIFR (Cipher Mining)", "COHR (Coherent)", "EQT", "HUT (Hut 8)", "TSEM"],
+      "q1_2026_new_puts_defensive": [
+        {"ticker": "NVDA", "notional_usd": ">$1.5B", "implication": "Major hedge into Q1 FY27 print; institutional signal that the fund expects downside risk on the catalyst"},
+        {"ticker": "SMH", "notional_usd": ">$2B", "implication": "Broad semi-cluster hedge"},
+        {"ticker": "AVGO", "notional_usd": "TBD", "implication": "Put hedge on a mega-cap AI ASIC long; flags as confirming bearish-skew cluster signal"},
+        {"ticker": "AMD", "notional_usd": "TBD"},
+        {"ticker": "MU", "notional_usd": "TBD", "implication": "Major: direct put hedge on Micron, the largest memory-cycle long for AI-infra books. Cross-reads bearishly with Samsung HBM4 capacity flag."},
+        {"ticker": "ORCL", "notional_usd": "TBD"},
+        {"ticker": "ASML", "notional_usd": "TBD"},
+        {"ticker": "INTC", "notional_usd": "TBD"},
+        {"ticker": "GLW", "notional_usd": "TBD"},
+        {"ticker": "TSM", "notional_usd": "TBD"}
+      ],
+      "q1_2026_filing_summary": "DEFENSIVE PIVOT — long thematic equity maintained/added in neocloud + storage + power; massive new PUT positions across AI mega-cap semis (>$3.5B notional combined). 13F AUM contracted from $5.52B → $3.86B (despite +36.42% Q1 perf), indicating substantial long equity reduced or rotated into options. Net read: structurally bullish AI-infra long-term, tactically defensive on AI-compute mega-cap for next 90-180 days.",
+      "q1_2026_performance": "+36.42%",
+      "q1_2026_aum_13f": 3860000000,
+      "next_filing_expected": "2026-08-15 (Q2 2026 13F)",
+      "filing_processed_date": "2026-05-18",
+      "delta_deep_dive_note": "research/2026-05-18-aschenbrenner-q1-2026-overlap.md"
+    },
+    {
+      "id": "coatue-management",
+      "name": "Coatue Management",
+      "manager": "Philippe Laffont",
+      "aum_usd_approx": 50000000000,
+      "strategy_summary": "Tech-specialist long/short hedge fund, concentrated AI/internet/software book. Tiger-cub lineage; consistently top-quartile tech allocator since 1999. Active in private AI rounds (Anthropic, xAI, Mistral, etc.) — public 13F is the tip of the iceberg.",
+      "why_track": "Highest-signal large fund for AI/tech themes. Concentrated bets, durable holding periods (multi-quarter), explicit AI thesis.",
+      "signal_quality_for_this_book": "high",
+      "filing_cadence_pattern": "Files quarterly on standard 45-day deadline",
+      "data_sources_priority_order": [
+        "https://whalewisdom.com/filer/coatue-management-l-l-c",
+        "SEC EDGAR Coatue Management LLC CIK lookup",
+        "https://hedgefollow.com/funds/Coatue+Management"
+      ],
+      "latest_known_holdings_summary": "Last documented 13F (Q4 2025): heavy in NVDA, META, MSFT, TSM, AMZN; mid-cap AI plays varying. Watch for fresh entries on Q1 2026 13F due ~05-15-2026.",
+      "caveats": [
+        "Long/short fund — 13F only shows long side; could be net-neutral on a name via shorts not visible",
+        "AUM creep risk — at $50B+ they can't move SMID names enough to matter as alpha-source for those tickers",
+        "Mostly mega-cap AI exposure; signal strongest in mid/large-cap themes we already participate in"
+      ],
+      "next_filing_expected": "2026-05-15 (Q1 2026 13F)"
+    },
+    {
+      "id": "whale-rock-capital",
+      "name": "Whale Rock Capital Management",
+      "manager": "Alex Sacerdote",
+      "aum_usd_approx": 10000000000,
+      "strategy_summary": "Concentrated long-short tech/disruptive-tech hedge fund. Multi-decade track record. AI infrastructure + applications focus.",
+      "why_track": "Smaller AUM than Coatue means they can move mid-caps. Concentrated thematic AI bets with long holding periods.",
+      "signal_quality_for_this_book": "high",
+      "data_sources_priority_order": [
+        "https://whalewisdom.com/filer/whale-rock-capital-management-llc",
+        "SEC EDGAR Whale Rock Capital Management"
+      ],
+      "next_filing_expected": "2026-05-15 (Q1 2026 13F)"
+    },
+    {
+      "id": "d1-capital-partners",
+      "name": "D1 Capital Partners",
+      "manager": "Daniel Sundheim",
+      "aum_usd_approx": 22000000000,
+      "strategy_summary": "Long/short tech-growth hedge fund spun out of Viking 2018. Heavy public + private tech exposure. Lone-pine-style concentrated growth bets.",
+      "why_track": "Tech-growth specialist; consistently surfaces emerging AI/internet themes early. Mid/large-cap signal alongside private-side overlap.",
+      "signal_quality_for_this_book": "high",
+      "data_sources_priority_order": [
+        "https://whalewisdom.com/filer/d1-capital-partners-l-p"
+      ],
+      "next_filing_expected": "2026-05-15"
+    },
+    {
+      "id": "duquesne-family-office",
+      "name": "Duquesne Family Office",
+      "manager": "Stan Druckenmiller",
+      "aum_usd_approx": 4000000000,
+      "strategy_summary": "Family office of legendary macro investor. Concentrated thematic bets (often AI-heavy: NVDA, MU, COHR positions in recent quarters). Macro-aware positioning.",
+      "why_track": "Best 'macro overlay on tech-AI' signal. Smaller AUM = nimble. Public commentary frequently anchors his bets, so 13Fs are often confirmation rather than discovery — but the macro shift signal (raising cash, rotating sectors) is what we want.",
+      "signal_quality_for_this_book": "high",
+      "additional_note": "Watch for SECTOR ROTATION signals — Druckenmiller's de-grossing or rotation moves often precede broader market regime shifts by months.",
+      "data_sources_priority_order": [
+        "https://whalewisdom.com/filer/duquesne-family-office-llc"
+      ],
+      "next_filing_expected": "2026-05-15"
+    },
+    {
+      "id": "berkshire-hathaway",
+      "name": "Berkshire Hathaway",
+      "manager": "Warren Buffett / Greg Abel (Combs/Weschler for tech subset)",
+      "aum_usd_approx": 350000000000,
+      "strategy_summary": "Reference-only old-money sentiment on tech. Combs/Weschler manage a tech-leaning subset (~$13-25B); Buffett's view dominates the equity book otherwise.",
+      "why_track": "NOT a thematic-AI signal source. Track as a contrarian / quality / sentiment reference. When Buffett *adds* to a tech name (rare), it carries unusual signal weight given his disposition.",
+      "signal_quality_for_this_book": "low (reference only)",
+      "data_sources_priority_order": [
+        "https://whalewisdom.com/filer/berkshire-hathaway-inc"
+      ],
+      "next_filing_expected": "2026-05-15"
+    }
+  ],
+  "integration_points": {
+    "invest_daily_worker_b": "Each Worker B run checks all tracked funds: (a) does any watchlist mover appear in any tracked fund's most recent 13F? (b) does any held position have material delta vs prior quarter? Flag as '🎯 TRACKED-FUND ALIGNMENT — [fund] [rank]' or '⚠️ TRACKED-FUND DIVERGENCE — [fund] EXITED/TRIMMED'. (c) **Cross-fund confluence**: when 3+ tracked funds hold the same name, flag as STRONG ALIGNMENT (vs. single-fund mention which is weaker).",
+    "invest_daily_worker_b_retail_attention_layer": "For names showing tracked-fund accumulation, additionally check retail-attention proxy: search-volume signal (e.g., 'is [TICKER] still ignored by retail or is r/wallstreetbets / Twitter discussing it?'). When tracked-fund buying is high BUT retail attention is low = the 'smart money loading up before crowd notices' setup. Flag as '🤫 INSTITUTIONAL ACCUMULATION + LOW RETAIL ATTENTION'.",
+    "invest_weekly_synthesis": "Weekly run: full tracked-fund overlap table across all 5 funds + 'cross-fund confluence' list (names ≥3 funds hold) + 'tracked-fund EXITS on held names' divergence list. When a fresh 13F drops, spawn one-shot delta deep dive per fund.",
+    "new_skill_invest_13f": "Proposed: /invest_13f [FUND_ID] — pulls latest 13F + prior quarter, computes deltas, outputs structured report. Defaults to all tracked funds if no arg."
+  },
+  "maintenance_protocol": {
+    "trigger": "Worker B detects a fresh 13F via WhaleWisdom / SEC EDGAR / Insider Monkey scrape during a ±5-trading-day window around each `next_filing_expected` date.",
+    "pm_action_required": [
+      "1. Pull the new 13F's full holdings list (or top 20 by weight if list is long)",
+      "2. Compute delta vs prior quarter (NEW positions / ADDS / TRIMS / EXITS) and identify any names that overlap with current `portfolio.json` holdings or `universe.json`",
+      "3. Update `tracked_funds.json` for the relevant fund: refresh `latest_known_top_holdings_*` array (and rename the key to the new quarter, e.g. `latest_known_top_holdings_q1_2026`), update `aum_usd`, update `aum_note` with the new filing date, advance `next_filing_expected` by one quarter (~+90 days)",
+      "4. Write a one-shot delta deep-dive note to `research/YYYY-MM-DD-[fund-id]-overlap.md` (same format as the seed file 2026-05-14-aschenbrenner-overlap.md)",
+      "5. Include the delta findings in the day's daily report under '🏦 Tracked-fund overlay' section"
+    ],
+    "frequency": "Quarterly per fund (4× per year). Not every daily run — only when filings drop.",
+    "cost_note": "Maintenance is cheap (~5 min PM work + one web fetch). Skipping it means the daily Worker B keeps comparing against stale Q-1 data — degrading the signal layer's utility within 90 days."
+  }
+}

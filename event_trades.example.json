@@ -1,0 +1,107 @@
+{
+  "_comment": "TEMPLATE — copy to event_trades.json and populate with active event trades. Pre-committed exit rules are non-negotiable.",
+  "framework": {
+    "purpose": "Track event-driven trades through the full lifecycle: entry → catalyst → exit-by-rule. Each event trade is sized to capture a specific catalyst; once the catalyst resolves, the position must be exited or converted to thematic-core sizing per the pre-committed rule.",
+    "default_exit_rules_for_event_trades": {
+      "if_beat_+5_to_10pct_AH": "Trim 50% into gap-up (within 24h). Hold remainder as runner for 5–7 days.",
+      "if_beat_+10pct_plus": "Trim 60–70% into gap-up. Hold small lottery-ticket runner.",
+      "if_inline_or_chop": "Hold 24–48h. If no follow-through by next session, exit full or trim to thematic core size.",
+      "if_miss_-5_to_10pct": "Full exit at next-day open.",
+      "if_miss_-10pct_plus": "Full exit immediately, accept the loss."
+    },
+    "key_lesson": "Recoil/IV-crush is real. Stocks that gap +8%+ on prints fade ~30–50% of the gap within a week on average. Event trades must trim into the gap; do NOT apply 'don't sell winners on confirmation' logic — that's for thematic positions only."
+  },
+  "active_event_trades": [
+    {
+      "id": "EXAMPLE_TICKER-YYYY-MM-DD",
+      "ticker": "EXAMPLE_TICKER",
+      "name": "Example event-trade name",
+      "entry_date": "YYYY-MM-DD",
+      "entry_price_usd": 0,
+      "entry_shares": 0,
+      "entry_cost_eur": 0,
+      "catalyst_event": "Q? earnings",
+      "catalyst_date": "YYYY-MM-DD",
+      "thesis_at_entry": "Why pre-positioned. What's the asymmetry. What's the bar consensus is pricing.",
+      "pre_committed_exit_rules": {
+        "if_beat_+5_to_10pct_AH": "Specific trim sizing for this trade",
+        "if_beat_+10pct_plus": "Specific trim sizing for this trade",
+        "if_inline_or_chop_+/-2pct": "Specific hold or exit instruction",
+        "if_miss_-5_to_10pct": "Full exit at next-day open.",
+        "if_miss_-10pct_plus": "Full exit immediately."
+      },
+      "actual_outcome": null,
+      "status": "active_pre_event",
+      "next_decision_window": "YYYY-MM-DD post-catalyst"
+    }
+  ],
+  "closed_event_trades": [],
+  "concentration_catalyst_trades": [
+    {
+      "_comment": "Concentration overlays sit on TOP of thematic_core. Often breach single-name caps deliberately for a specific catalyst.",
+      "id": "EXAMPLE_TICKER-YYYY-MM-DD-concentration",
+      "ticker": "EXAMPLE_TICKER",
+      "trade_class": "catalyst_concentration_overlay_on_thematic_core",
+      "entry_date": "YYYY-MM-DD",
+      "entry_price_usd": 0,
+      "entry_shares_added": 0,
+      "entry_cost_eur": 0,
+      "combined_position_post_add_shares": 0,
+      "combined_position_avg_cost_eur": 0,
+      "combined_position_weight_pct_at_entry": 0,
+      "catalyst_event": "Q? earnings",
+      "catalyst_date": "YYYY-MM-DD",
+      "thesis_at_entry": "Why concentration is warranted for this specific catalyst.",
+      "framework_violation_note": "DELIBERATE: position weight breaches single-name cap by Xpp. Accepted by user as catalyst-specific overlay. Reverts post-print via mechanical exits.",
+      "pre_committed_exit_rules": {
+        "scenario_A_blowout": {
+          "trigger": "Beat + Q?+1 guide ≥ bull threshold + thesis-confirming commentary + gap +10%+",
+          "action": "Trim X sh into gap-up T+1 open. Lock €Y into cash. Position N → N-X sh.",
+          "rationale": "Lock the catalyst gain. Remaining sh preserve thematic_core exposure."
+        },
+        "scenario_B_clean_beat_inline_guide": {
+          "trigger": "Beat + Q?+1 guide in-line + AH chop ±5%",
+          "action": "Trim smaller % within 48h on any post-print stabilization.",
+          "rationale": "Sell-the-news pattern likely. Modest trim respects bar-too-high tape without abandoning thesis."
+        },
+        "scenario_C_inline_chop": {
+          "trigger": "In-line beat + Q?+1 flat + AH chop / commentary neutral",
+          "action": "Trim larger %, move proceeds to cash, hold core and reassess thesis."
+        },
+        "scenario_D_miss_soft_guide": {
+          "trigger": "Miss revenue/EPS + Q?+1 guide soft + thesis-break commentary",
+          "action": "EXIT majority of catalyst tranche next-day open. Position N → original core size."
+        },
+        "scenario_E_disaster_cycle_peak": {
+          "trigger": "Big miss + soft Q?+1 + cycle-peak language",
+          "action": "EXIT full catalyst tranche immediately. Reassess core position within 5 sessions."
+        }
+      },
+      "pre_print_trim_triggers_live": [
+        {
+          "trigger_price_usd_band_1": "$X-Y",
+          "trigger_action_1": "Trim N sh into upside continuation. Locks ~€Z.",
+          "framework_status": "Active / Triggered / Fired"
+        }
+      ],
+      "status": "active_pre_print",
+      "next_decision_window": "YYYY-MM-DD AMC print + T+1 mechanical execution",
+      "alt_data_monitoring_sources": [
+        "Industry pricing data (TrendForce / DRAMeXchange / equivalent)",
+        "Supply chain leaks (DigiTimes / Asian press)",
+        "Customer-side commentary (NVDA earnings call / hyperscaler capex)",
+        "Sell-side specialist (e.g., SemiAnalysis)",
+        "Hiring trend (LinkedIn job postings)",
+        "Industry conferences in window (management commentary opportunities)"
+      ],
+      "print_night_tells": [
+        "Forward-quarter revenue guide vs bull threshold",
+        "Specific product / market commentary on key thesis pillar",
+        "Margin language",
+        "Capex guide (cycle duration signal)",
+        "Inventory commentary"
+      ],
+      "linked_research": "research/ticker-reports/YYYY-MM-DD-TICKER-preprint-dossier.md"
+    }
+  ]
+}

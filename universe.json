@@ -1,0 +1,1674 @@
+{
+  "_comment": "Unified investment universe. Single source of truth for ticker tracking. Tier per ticker determines daily-routine attention level.",
+  "schema_version": "2.0",
+  "last_updated": "2026-05-27",
+  "purpose": "Wide-net universe of tickers organized by thematic sub-theme. Each entry carries a tier (core_watchlist, scout_active, scout_monitor, hype_speculation, scout_archive, pre_ipo_watch) that determines how Worker B attends to it during daily runs.",
+  "framework": {
+    "tier_definitions": {
+      "core_watchlist": "Daily Worker B full scan. Names with active catalyst monitoring, broader liquidity, generally graduated from scout via signal threshold or strategic importance.",
+      "scout_active": "3 or more of 5 signals on scorecard. Daily lightweight check (scout-flag layer in Worker B). Size 2 to 3 percent of book per name if entered.",
+      "scout_monitor": "1 to 2 of 5 signals. Weekly check. Size 1 to 2 percent if entered.",
+      "hype_speculation": "Momentum or narrative play, fewer fundamental signals. Size 0.5 to 1 percent per name. Hard 30 percent drawdown stop. 90-day time-box review.",
+      "scout_archive": "Graduated to core_watchlist or thesis broke or post-discovery beyond entry window. Reference only.",
+      "pre_ipo_watch": "Private companies on near-term IPO track. Evaluate at S-1 filing."
+    },
+    "five_signal_scorecard": {
+      "1_ma_capability_tuck": "Thematic-direction acquisitions that expand addressable use case. 8-K + PRs.",
+      "2_first_named_dod_or_hyperscaler_contract": "Specific customer + specific dollars. SAM.gov / USAspending / 8-K.",
+      "3_strategic_equity_from_tier1_tech": "NVentures, hyperscaler corp-VC, tracked-fund 13F overlap. 13F + 8-K.",
+      "4_revenue_or_backlog_inflection": "Sequential acceleration; backlog more than 50 percent QoQ leads revenue 3 to 12 months. Quarterly earnings.",
+      "5_international_or_second_customer_validator": "Foreign government, second OEM, second hyperscaler.",
+      "scoring": "3+ signals = scout_active; 4 to 5 signals = candidate for auto-promotion to core_watchlist; less than 3 = scout_monitor or hype_speculation."
+    },
+    "auto_promotion_rules": {
+      "scout_active_to_core_watchlist": "Trigger: scorecard reaches 4 or 5 of 5 AND a recent named catalyst exists. PM proposes promotion in next daily run; user confirms.",
+      "core_watchlist_to_scout_monitor": "Trigger: no catalyst movement in 90 days AND no thesis-confirming news. PM flags for demotion review.",
+      "scout_archive_trigger": "Thesis-break confirmed OR position exited and stopped tracking OR catalyst passed without entry."
+    },
+    "sizing_rules": {
+      "core_watchlist_per_name_max_pct": "Per thematic_core target weight in tranches.json (typically 5 to 12 percent).",
+      "scout_active_per_name_max_pct": 3,
+      "scout_active_cluster_cap_pct": 7,
+      "hype_speculation_per_name_max_pct": 1,
+      "hype_speculation_cluster_cap_pct": 4,
+      "combined_speculative_max_pct": 10
+    },
+    "exclusions": [
+      "Hard exclusions live in user-specific memory or local config, not in this universe file."
+    ]
+  },
+  "case_studies": {
+    "see_research_note": "research/2026-05-15-multibagger-playbook.md — full ONDS backtrack + SOUN/RGTI/QBTS/AAOI/neocloud/drone-cohort case studies",
+    "key_takeaways": [
+      "ONDS optimal entry early-2024 ($0.80-1.50 / ~$50M mcap) — 2-3 of 5 signals hitting",
+      "SOUN single biggest catalyst was NVIDIA 13F disclosure Feb 2024 — caught by tracked-fund overlay layer (now integrated)",
+      "Sector-wide narrative inflections (quantum Dec 2024) drove pure-play cohorts +500-1000% in 90 days",
+      "Backlog leading indicator: backlog growth precedes revenue recognition by 3-12 months"
+    ]
+  },
+  "themes": {
+    "drones_counter_uas_loitering_munitions": {
+      "thesis": "DoD 'Unleashing Drone Dominance' $1B+/300k drones; Army targeting 1M drones 2-3 years; EU rearmament; Anduril/Skydio/Shield AI IPO candidates.",
+      "tickers": [
+        {
+          "ticker": "RCAT",
+          "name": "Red Cat Holdings",
+          "mcap": "$500M-1B",
+          "thesis": "Black Hornet 4 + Edge 130 Army SRR; Palantir partnership",
+          "signals": 3,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "ACHR",
+          "name": "Archer Aviation",
+          "mcap": "$3-5B",
+          "thesis": "Anduril Omen powertrain partnership; eVTOL FAA timeline",
+          "signals": 4,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "UMAC",
+          "name": "Unusual Machines",
+          "mcap": "$100-300M",
+          "thesis": "NDAA-compliant FPV drone components",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "DPRO",
+          "name": "Draganfly",
+          "mcap": "<$100M",
+          "thesis": "DoD-grade sUAS / public safety",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "MOB",
+          "name": "Mobilicom",
+          "mcap": "<$50M",
+          "thesis": "Drone cybersecurity + comms",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "POWW",
+          "name": "AMMO Inc",
+          "mcap": "$200-400M",
+          "thesis": "Ammunition + defense-adjacent",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "BAH",
+          "name": "Booz Allen Hamilton (mid)",
+          "thesis": "Defense AI/cyber integrator",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "AIRO",
+          "name": "Airo Group",
+          "thesis": "Recently IPO'd drone holding",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "ELDN",
+          "name": "Eledon Pharmaceuticals",
+          "note": "Verify — micro speculation only",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "ONDS",
+          "name": "Ondas Holdings",
+          "note": "TEMPLATE — 20x already played",
+          "tier": "scout_archive"
+        },
+        {
+          "ticker": "AVAV",
+          "name": "AeroVironment",
+          "note": "Watchlist with WAIT verdict",
+          "tier": "scout_archive"
+        },
+        {
+          "ticker": "KTOS",
+          "name": "Kratos Defense",
+          "tier": "scout_archive"
+        }
+      ]
+    },
+    "robotics_humanoid_industrial_automation": {
+      "thesis": "Humanoid robotics + industrial automation. Most credible names private (Figure, Apptronik, Sanctuary). Public exposure skewed mid-cap.",
+      "tickers": [
+        {
+          "ticker": "SERV",
+          "name": "Serve Robotics",
+          "mcap": "$500M-1B",
+          "thesis": "NVIDIA equity; Uber spinout; 2,000+ fleet",
+          "signals": 3,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "SYM",
+          "name": "Symbotic",
+          "mcap": "$20-40B (mid)",
+          "thesis": "Walmart automation; warehousing",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "KSCP",
+          "name": "Knightscope",
+          "mcap": "<$50M",
+          "thesis": "Autonomous security robots",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "TER",
+          "name": "Teradyne",
+          "mcap": "mid",
+          "thesis": "Universal Robots cobots; semi test",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "CGNX",
+          "name": "Cognex",
+          "mcap": "mid",
+          "thesis": "Machine vision automation",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ZBRA",
+          "name": "Zebra Technologies",
+          "mcap": "mid",
+          "thesis": "Warehouse automation + AI imaging",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "TRMB",
+          "name": "Trimble",
+          "mcap": "mid",
+          "thesis": "Construction/agtech autonomy",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "STXS",
+          "name": "Stereotaxis",
+          "mcap": "<$100M",
+          "thesis": "Surgical robotics micro",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ASXC",
+          "name": "Asensus Surgical",
+          "mcap": "<$100M",
+          "thesis": "Surgical robotics micro",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "RGC",
+          "name": "Regencell",
+          "note": "Pure hype pattern — monitor only",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "TSLA",
+          "name": "Tesla",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        }
+      ]
+    },
+    "lidar_autonomy_av": {
+      "thesis": "Lidar/AV recovering from 2022-2024 winter; selective re-rating on commercial deployments.",
+      "tickers": [
+        {
+          "ticker": "AEVA",
+          "name": "Aeva Inc",
+          "mcap": "$300-700M",
+          "thesis": "4D FMCW Lidar; Porsche industrial deal",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "OUST",
+          "name": "Ouster",
+          "mcap": "$500M-1B",
+          "thesis": "Digital lidar; NVIDIA Isaac integration",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "INVZ",
+          "name": "Innoviz",
+          "mcap": "<$300M",
+          "thesis": "BMW lidar program",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "LAZR",
+          "name": "Luminar",
+          "mcap": "<$1B",
+          "thesis": "Volvo/Mercedes lidar; recovery play",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "MBLY",
+          "name": "Mobileye",
+          "mcap": "$10-15B (mid)",
+          "thesis": "Intel-spinout AV vision",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "AUR",
+          "name": "Aurora Innovation",
+          "mcap": "$5-10B (mid)",
+          "thesis": "AV trucking; Uber + PACCAR + Toyota + NVIDIA",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "MVIS",
+          "name": "MicroVision",
+          "mcap": "<$200M",
+          "thesis": "Lidar + AR; chronic underperformer",
+          "tier": "hype_speculation"
+        }
+      ]
+    },
+    "edge_ai_specialty_silicon": {
+      "thesis": "Edge AI silicon + specialty fabless + RF/photonics adjacencies. Sub-$5B specialty plays with hyperscaler or strategic-investor traction.",
+      "tickers": [
+        {
+          "ticker": "AMBA",
+          "name": "Ambarella",
+          "mcap": "$2-4B (mid)",
+          "thesis": "Edge AI SoCs — vision, ADAS, robotics",
+          "signals": 3,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "ALAB",
+          "name": "Astera Labs",
+          "mcap": "mid",
+          "thesis": "AI fabric interconnect (PCIe/CXL); hyperscaler",
+          "signals": 3,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "CEVA",
+          "name": "CEVA Inc",
+          "mcap": "$400-600M",
+          "thesis": "Semiconductor IP licensing — DSP + AI accelerator + wireless. Q1 2026: licensing +18% to $17.8M (3yr high), AI >20% of mix. Renesas R-Car V4H AI DSP in 2026 Toyota RAV4 production. Major Bluetooth 7 HDT design win. 21B+ devices shipped, 400+ customers. UBS Buy / $27 PT (+34%). Profitable IP-licensor compounder.",
+          "signals": 3,
+          "signals_detail": "C1 no (older M&A), C2 yes (Toyota production + Renesas + NXP named customers), C3 no, C4 yes (licensing inflection 3yr high), C5 yes (Japan/EU/global customer diversity).",
+          "watch": "Bluetooth 7 royalty ramp 2027; new automotive AI DSP wins; UBS PT realization",
+          "added": "2026-05-15",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_active",
+          "watchlist_note": "Semiconductor IP licensing: DSP plus AI accelerator plus wireless connectivity (Bluetooth, Wi-Fi, UWB) plus sensor fusion. Royalty-stream compounder. Q1 2026: $27M rev (+11%), licensing +18% to $17.8M (3yr high), AI >20% of licensing mix. Renesas R-Car V4H AI DSP now in 2026 Toyota RAV4 production plus NXP partnership plus major Bluetooth HDT (Bluetooth 7) design win with US semi. 21B+ devices shipped, 400+ customers historically. UBS initiated Buy with $27 PT (approx +34% upside). Profitable IP licensor with real edge-AI inflection, not pre-revenue moonshot."
+        },
+        {
+          "ticker": "SITM",
+          "name": "SiTime",
+          "mcap": "$2-4B",
+          "thesis": "Precision timing for AI DCs; MEMS",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor"
+        },
+        {
+          "ticker": "CRDO",
+          "name": "Credo Technology",
+          "mcap": "$3-6B (mid)",
+          "thesis": "High-speed AEC for AI clusters",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "TSEM",
+          "name": "Tower Semiconductor",
+          "mcap": "$5-7B (mid)",
+          "thesis": "Specialty foundry; $1.3B SiPho contracts 2027; SA-LP top 10",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor",
+          "watchlist_note": "Also TSEM.TA on TASE."
+        },
+        {
+          "ticker": "MRVL",
+          "name": "Marvell Technology",
+          "mcap": "mid-large",
+          "thesis": "Custom AI silicon; NVIDIA $2B partner",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "SYNA",
+          "name": "Synaptics",
+          "mcap": "$2-4B",
+          "thesis": "Edge AI/IoT semi; consumer + auto",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "WOLF",
+          "name": "Wolfspeed",
+          "mcap": "<$1B post-decline",
+          "thesis": "SiC power semis; AI DC + EV; broken-narrative recovery",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ON",
+          "name": "Onsemi",
+          "mcap": "mid-large",
+          "thesis": "SiC + automotive + AI power conversion",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor"
+        },
+        {
+          "ticker": "ENTG",
+          "name": "Entegris",
+          "mcap": "$15-20B (mid-large)",
+          "thesis": "Specialty materials for advanced semi",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "NVEC",
+          "name": "NVE Corporation",
+          "mcap": "$444M",
+          "thesis": "Spintronics specialty — magnetic sensors + isolators + MRAM R&D/licensing. Already profitable: 78.7% GM, 57.7% net margin on $26.3M TTM rev. Defense/aerospace customer base + AI-edge MRAM optionality. Different profile from typical scout: a quality micro-cap with niche moat, not a moonshot pre-revenue play. Added 2026-05-15.",
+          "signals": 2,
+          "signals_detail": "C1 partial (M&A: no — organic), C2 partial (DoD/aerospace yes but not single-named hyperscaler), C3 no (no tier-1 strategic equity disclosed), C4 (revenue inflection): no — steady-state profitable, C5 (international/2nd validator): yes — diversified defense + medical + industrial. Score: 1.5-2/5. Best-case catalyst is MRAM commercial inflection beyond defense — multi-year potential, not near-term.",
+          "watch": "MRAM defense/aerospace design-win announcements; AI-edge memory licensing news; revenue trajectory beyond $26M TTM",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor",
+          "watchlist_note": "Spintronics specialty semi: magnetic sensors, isolators, and MRAM (R&D plus licensing). Tiny ($444M mcap, $26.3M TTM rev) but extraordinarily profitable (78.7% GM / 57.7% net margin). MRAM optionality for radiation-hardened defense / aerospace plus emerging AI-edge memory. High-quality micro-cap with niche moat, not a pre-revenue moonshot. Catalysts to watch: MRAM commercial inflection beyond defense; new defense / aero design wins; AI edge-memory adoption."
+        },
+        {
+          "ticker": "VLN",
+          "name": "Valens Semiconductor",
+          "mcap": "<$300M",
+          "thesis": "Automotive MIPI A-PHY (VA7000 — first to spec) + HDBaseT for AV/industrial. Q1 2026: $16.9M rev, FY26 guide $75-77M, GM 62-65%. 4 global VA7000 design wins incl. Chinese premium OEM (SoP 2027), Sakae Riken Japan e-mirror partnership. EU NCAP 2026 ADAS mandate + rising sensor count per vehicle tailwind. UPGRADED from hype_speculation 2026-05-15 — 4 named design wins is past hype tier.",
+          "signals": 3,
+          "signals_detail": "C1 no, C2 yes (4 named OEM design wins), C3 no, C4 partial (revenue inflection ramping but SoP 2027 is the real ramp), C5 yes (Chinese + Japanese + European customer diversity). Score: 2.5-3/5.",
+          "watch": "5th+ MIPI A-PHY design win; revenue inflection toward FY27 SoP; competitor entry (Texas Instruments etc.)",
+          "added": "2026-05-15",
+          "upgraded_from": "hype_speculation",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor",
+          "watchlist_note": "Automotive plus AV connectivity semis. MIPI A-PHY (VA7000, first chipset to spec) for ADAS sensor connectivity plus HDBaseT for AV / industrial. Q1 2026: $16.9M rev, FY26 guide $75-77M, GM 62-65%. 4 global VA7000 MIPI A-PHY design wins (incl. Chinese premium auto OEM, SoP 2027), first production-ready A-PHY e-mirror with Sakae Riken Kogyo Japan. Tailwind from EU NCAP 2026 ADAS mandates plus rising sensor counts per vehicle. Sub-$300M mcap; high-vol but design-win flow is real."
+        },
+        {
+          "ticker": "PRSO",
+          "name": "Peraso",
+          "mcap": "<$50M",
+          "thesis": "mmWave 60GHz; AI fabric pivot speculative",
+          "risk": "going-concern",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "ARBE",
+          "name": "Arbe Robotics",
+          "mcap": "<$200M",
+          "thesis": "4D imaging radar",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "BRCHF",
+          "name": "BrainChip",
+          "mcap": "<$300M",
+          "thesis": "Neuromorphic edge AI",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "SMTC",
+          "name": "Semtech",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "MTSI",
+          "name": "MACOM Technology",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "KEYS",
+          "name": "Keysight Technologies",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        }
+      ]
+    },
+    "ai_software_agents_data_infra": {
+      "thesis": "Sub-$10B AI software / agents / data infrastructure plays with major-tech backing or strong vertical positions.",
+      "tickers": [
+        {
+          "ticker": "SOUN",
+          "name": "SoundHound AI",
+          "mcap": "$3-6B",
+          "thesis": "NVIDIA equity; voice AI; auto + restaurant",
+          "signals": 4,
+          "note": "Post-discovery; entry on pullbacks",
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "RXRX",
+          "name": "Recursion Pharmaceuticals",
+          "mcap": "$2-3B",
+          "thesis": "NVIDIA equity + DGX SuperPOD; Bayer + Roche",
+          "signals": 3,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "INOD",
+          "name": "Innodata",
+          "mcap": "$1-2B",
+          "thesis": "AI data services for LLM training; mag-7 customers",
+          "signals": 3,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "TEM",
+          "name": "Tempus AI",
+          "mcap": "$10-15B (mid)",
+          "thesis": "AI healthcare data; Recursion partnership",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "BBAI",
+          "name": "BigBear.ai",
+          "mcap": "$1-3B",
+          "thesis": "AI for defense + intel community",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "AI",
+          "name": "C3.ai",
+          "mcap": "$3-5B",
+          "thesis": "Enterprise AI software",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ABSI",
+          "name": "Absci",
+          "mcap": "<$500M",
+          "thesis": "AI generative biology",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "PATH",
+          "name": "UiPath",
+          "mcap": "$5-7B (mid)",
+          "thesis": "RPA + AI agents",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "DT",
+          "name": "Dynatrace",
+          "mcap": "$15B+ (mid-large)",
+          "thesis": "AI observability",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "DDOG",
+          "name": "Datadog",
+          "mcap": "$40B+ (large)",
+          "thesis": "Observability with AI agents layer",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "MDB",
+          "name": "MongoDB",
+          "mcap": "$20B (mid-large)",
+          "thesis": "Vector DB / AI data infra",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "CFLT",
+          "name": "Confluent",
+          "mcap": "$8-12B (mid)",
+          "thesis": "Real-time data streaming for AI",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "MNDY",
+          "name": "Monday.com",
+          "mcap": "$10-15B (mid)",
+          "thesis": "Work management with AI agents",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ASAN",
+          "name": "Asana",
+          "mcap": "$5-8B (mid)",
+          "thesis": "Work management; AI features",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "FIVN",
+          "name": "Five9",
+          "mcap": "$3-5B",
+          "thesis": "CCaaS with AI agents",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "CXAI",
+          "name": "CXApp",
+          "mcap": "<$100M",
+          "thesis": "Workplace AI",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "GETY",
+          "name": "Getty Images",
+          "mcap": "mid",
+          "thesis": "AI-content lawsuits + licensing",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "TUYA",
+          "name": "Tuya",
+          "mcap": "<$1B",
+          "thesis": "IoT + AI in China retail",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "PLTR",
+          "name": "Palantir",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "APP",
+          "name": "AppLovin",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist",
+          "thesis": "Source CSV had 6RV (Frankfurt listing). Corrected to APP on NASDAQ."
+        },
+        {
+          "ticker": "NOW",
+          "name": "ServiceNow",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist",
+          "thesis": "AI-agent enterprise SaaS. Agentic-AI deployment layer for IT / HR / finance / legal / procurement workflows. NVIDIA partnership real and recent: Jensen Huang appeared in person at Knowledge 2026 (May 5-7) alongside McDermott, pitched NOW as deployment layer for AI-managed robots, announced Project Arc (joint NVDA-NOW autonomous desktop agent). Federal angle: GSA OneGov framework deal Sept 2025 with up to 70% off ITSM Pro bundles through 2028; broad federal customer base (VA / DoD / IRS / Treasury / State / CIA). 'Trump admin buying' narrative is overstated vs actual new contract flow. Q1 CY26 print Apr 22 was -17.75% (worst single-day in company history) on guidance deceleration vs whisper despite raised FY guide to $15.74-15.78B. Stock $100 (May 21 close), -52% from peak $211, approx -34% YTD. Median analyst PT $140 (43/48 Buy). Next print Q2 CY26 around July 29. Watch DOGE / federal-IT-spend as the quiet thesis risk."
+        }
+      ]
+    },
+    "ai_power_smr_nuclear_neoclouds_solar": {
+      "thesis": "AI data-center power — small modular reactors + neocloud GPU operators + AI-aware IPPs + US-made solar (NEW 2026-05-18: solar leg added on TE inclusion).",
+      "tickers": [
+        {
+          "ticker": "TE",
+          "name": "T1 Energy",
+          "mcap": "$1.6B",
+          "thesis": "US solar module manufacturer post-Trina Texas factory acquisition. 5 GW G1_Dallas operational + 2.1 GW G2_Austin Q4 2026. Q1 2026 first profitable quarter ($3.9M net income, $9.1M Adj EBITDA). IRA 45X tax credit eligible (first sale $160M). $125M convertible May 2026 = dilution overhang creating entry window. **Aschenbrenner Q1 2026 NEW BUY 10M sh (~1.5% of $3.86B 13F book) = strong third-party validation.** Fills SOLAR gap in our AI-power cluster (currently 0% solar/PV).",
+          "signals": 3,
+          "signals_detail": "C1 ✅ M&A (Trina factory); C2 ❌ no named single-customer; C3 ✅ Aschenbrenner + Trina retained 17.4%; C4 ✅ Q1 2026 first profitable; C5 ⚠️ international validation gap (domestic-only is the thesis).",
+          "watch": "G2_Austin Q4 2026 cell-production milestone; next tax credit sale; pullback below $5.50 = strong entry",
+          "added": "2026-05-18",
+          "aschenbrenner_position": "10M sh / ~1.5% of his fund",
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "NNE",
+          "name": "Nano Nuclear Energy",
+          "mcap": "$700M-1B",
+          "thesis": "Microreactor designs for AI DC on-site power",
+          "signals": 3,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "CIFR",
+          "name": "Cipher Mining",
+          "mcap": "$1-2B",
+          "thesis": "BTC-to-AI pivot; $11.4B AI hosting pipeline",
+          "signals": 3,
+          "note": "DEMOTED 2026-05-18 — Aschenbrenner EXITED Q1 2026 / divergence signal; will move to scout_monitor on next review",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_active",
+          "watchlist_note": "AI-pivot neocloud (BTC miner repurposing power and sites for AI hosting). Smaller cap than IREN / CRWV / NBIS. High-vol thematic. Track for AI hosting contract announcements as catalyst."
+        },
+        {
+          "ticker": "TLN",
+          "name": "Talen Energy",
+          "mcap": "$10-15B (mid)",
+          "thesis": "Nuclear + AWS data center deal; AI power IPP",
+          "signals": 4,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "OKLO",
+          "name": "Oklo Inc",
+          "mcap": "$5-8B",
+          "thesis": "Aurora fast reactor; Sam Altman former chair",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "SMR",
+          "name": "NuScale Power",
+          "mcap": "$2-4B",
+          "thesis": "SMR design; DoE backing",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "CCJ",
+          "name": "Cameco",
+          "mcap": "$25B+ (mid-large)",
+          "thesis": "Uranium upstream; AI nuclear renaissance",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "UEC",
+          "name": "Uranium Energy",
+          "mcap": "$3-5B",
+          "thesis": "US uranium production",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "CORZ",
+          "name": "Core Scientific",
+          "mcap": "$3-5B",
+          "thesis": "BTC-to-AI pivot; MSFT hosting; SA-LP basket",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "RIOT",
+          "name": "Riot Platforms",
+          "mcap": "$3-5B",
+          "thesis": "BTC-to-AI pivot; SA-LP basket",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "HUT",
+          "name": "Hut 8",
+          "mcap": "$2-3B",
+          "thesis": "BTC-to-AI pivot; SA-LP basket",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "BTDR",
+          "name": "BitDeer",
+          "mcap": "$2-4B",
+          "thesis": "BTC-to-AI pivot; SA-LP basket",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "NBIS",
+          "name": "Nebius Group",
+          "mcap": "$5-10B (mid)",
+          "thesis": "GPU neocloud post-Yandex",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "NRG",
+          "name": "NRG Energy",
+          "mcap": "$25B+ (mid-large)",
+          "thesis": "AI-aware IPP; data center PPA",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "GEV",
+          "name": "GE Vernova",
+          "mcap": "large",
+          "thesis": "Grid scale gas/wind for AI DC",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "LEU",
+          "name": "Centrus Energy",
+          "mcap": "$2-3B",
+          "thesis": "HALEU enrichment",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "UUUU",
+          "name": "Energy Fuels",
+          "mcap": "$2-3B",
+          "thesis": "Rare earth + uranium",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "URA",
+          "name": "Global X Uranium ETF",
+          "note": "Basket exposure",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "VRT",
+          "name": "Vertiv Holdings",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "ET",
+          "name": "Energy Transfer",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "CEG",
+          "name": "Constellation Energy",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "BE",
+          "name": "Bloom Energy",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "SEI",
+          "name": "Solaris Energy Infrastructure",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "EQT",
+          "name": "EQT Corp",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "IREN",
+          "name": "IREN Limited",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist",
+          "thesis": "AI-cloud / neocloud (formerly Iris Energy, BTC miner pivoted to AI). Landed 5-year $9.7B Microsoft GPU cloud contract at approx 85% EBITDA margins. Fiscal Q1 26 EPS $1.07 (profitable, unlike CRWV / NBIS). High-beta AI-infra thematic adjacent to APLD."
+        }
+      ],
+      "excluded": "CRWV (permanent)",
+      "held_or_pass": "APLD held, IREN PASS, VST/BE/EQT held"
+    },
+    "ai_photonics_optical_networking": {
+      "thesis": "AI optical interconnect (800G→1.6T→3.2T transceivers); silicon photonics.",
+      "tickers": [
+        {
+          "ticker": "COHR",
+          "name": "Coherent Corp",
+          "mcap": "$20B+ (mid-large)",
+          "thesis": "NVIDIA $2B stake; CPO; SA-LP top 10",
+          "note": "Watchlist WAIT 05-04",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor"
+        },
+        {
+          "ticker": "AAOI",
+          "name": "Applied Optoelectronics",
+          "mcap": "$2-4B",
+          "thesis": "Hyperscaler 800G; up 3,800%",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor"
+        },
+        {
+          "ticker": "POET",
+          "name": "POET Technologies",
+          "mcap": "<$500M",
+          "thesis": "Optical engine packaging; small-cap photonics",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "CIEN",
+          "name": "Ciena",
+          "mcap": "mid",
+          "thesis": "Optical transport; AI backbone",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor"
+        },
+        {
+          "ticker": "ANET",
+          "name": "Arista Networks",
+          "mcap": "$80B+ (large)",
+          "note": "Already in watchlist",
+          "tier": "core_watchlist",
+          "promoted_from": "scout_monitor"
+        },
+        {
+          "ticker": "MTLS",
+          "name": "Materialise",
+          "mcap": "<$500M",
+          "thesis": "3D printing + photonics adjacency",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "LITE",
+          "name": "Lumentum",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "FN",
+          "name": "Fabrinet",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "300394.SZ",
+          "name": "Tianfu Communication",
+          "exchange": "SZSE",
+          "region": "CN",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "002281.SZ",
+          "name": "Accelink Technologies",
+          "exchange": "SZSE",
+          "region": "CN",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "300308.SZ",
+          "name": "Zhongji Innolight",
+          "exchange": "SZSE",
+          "region": "CN",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "300502.SZ",
+          "name": "Eoptolink Technology",
+          "exchange": "SZSE",
+          "region": "CN",
+          "tier": "core_watchlist",
+          "thesis": "Source CSV had 300502.ST (typo). Corrected."
+        }
+      ]
+    },
+    "space_satellite_intel_launch": {
+      "thesis": "DoD space-domain awareness + commercial geospatial AI + reusable launch + LEO comms. Growing AI overlay (Palantir + satellite data fusion).",
+      "tickers": [
+        {
+          "ticker": "RKLB",
+          "name": "Rocket Lab",
+          "mcap": "$10-15B (mid)",
+          "thesis": "Reusable Electron; Neutron coming; satellite components",
+          "signals": 4,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "BKSY",
+          "name": "BlackSky Technology",
+          "mcap": "$500M-1B",
+          "thesis": "SAR + EO satellite intel; DoD + Palantir integration",
+          "signals": 3,
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "ASTS",
+          "name": "AST SpaceMobile",
+          "mcap": "$5-10B (mid)",
+          "thesis": "Direct-to-cell LEO comms; AT&T/Verizon",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "LUNR",
+          "name": "Intuitive Machines",
+          "mcap": "$1-2B",
+          "thesis": "Lunar landers; DoD/NASA contracts",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "RDW",
+          "name": "Redwire Space",
+          "mcap": "$500M-1B",
+          "thesis": "Space infrastructure / digital engineering",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "SPIR",
+          "name": "Spire Global",
+          "mcap": "<$500M",
+          "thesis": "Satellite-as-a-service; data analytics",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "PL",
+          "name": "Planet Labs",
+          "mcap": "$1-2B",
+          "thesis": "Commercial geospatial AI; Daily Earth",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "IRDM",
+          "name": "Iridium Comms",
+          "mcap": "$3-5B (mid)",
+          "thesis": "LEO satellite global comms",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "CMTL",
+          "name": "Comtech Telecom",
+          "mcap": "<$200M",
+          "thesis": "Satellite comms + DoD",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "MNTS",
+          "name": "Momentus",
+          "mcap": "<$50M",
+          "thesis": "Space transport; speculative micro",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "SIDU",
+          "name": "Sidus Space",
+          "mcap": "<$50M",
+          "thesis": "Hybrid SaaS satellites; micro",
+          "tier": "hype_speculation"
+        }
+      ]
+    },
+    "ai_cybersecurity": {
+      "thesis": "AI-driven cyber + AI-specific security (model security, vector DB security). Sector consolidating around larger names but mid-cap entry windows exist.",
+      "tickers": [
+        {
+          "ticker": "S",
+          "name": "SentinelOne",
+          "mcap": "$5-8B (mid)",
+          "thesis": "AI-driven endpoint security; PlatformOne",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "RBRK",
+          "name": "Rubrik",
+          "mcap": "$10-12B (mid)",
+          "thesis": "Data security + AI workload protection",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "TENB",
+          "name": "Tenable Holdings",
+          "mcap": "$5-7B (mid)",
+          "thesis": "Exposure management + AI threat intel",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "NET",
+          "name": "Cloudflare",
+          "mcap": "$50B+ (large)",
+          "thesis": "AI Workers / edge inference + security",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ZS",
+          "name": "Zscaler",
+          "mcap": "$30B+ (mid-large)",
+          "thesis": "Zero-trust + AI threat detection",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "CRWD",
+          "name": "CrowdStrike",
+          "mcap": "$80B+ (large)",
+          "thesis": "AI security incumbents",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "PANW",
+          "name": "Palo Alto Networks",
+          "mcap": "$120B+ (large)",
+          "thesis": "Platform + AI Cortex",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "VRNS",
+          "name": "Varonis Systems",
+          "mcap": "$5-7B (mid)",
+          "thesis": "Data security + AI risk",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "OB",
+          "name": "Outbrain (etc — verify)",
+          "note": "Verify ticker",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "QCC",
+          "name": "Quantum-eCloud / similar speculative",
+          "note": "Placeholder",
+          "tier": "hype_speculation"
+        }
+      ]
+    },
+    "ai_healthcare_drug_discovery": {
+      "thesis": "AI drug discovery + AI diagnostics + genomics. NVIDIA strategic equity flowing into the space. Long timelines but multi-bagger potential when clinical milestones hit.",
+      "tickers": [
+        {
+          "ticker": "RXRX",
+          "name": "Recursion Pharmaceuticals",
+          "note": "Already in ai_software section",
+          "tier": "scout_active"
+        },
+        {
+          "ticker": "TEM",
+          "name": "Tempus AI",
+          "mcap": "$10-15B (mid)",
+          "thesis": "AI healthcare data platform",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "SDGR",
+          "name": "Schrödinger",
+          "mcap": "$2-3B",
+          "thesis": "Computational drug discovery",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "EXAI",
+          "name": "Exscientia",
+          "mcap": "<$1B",
+          "thesis": "AI drug discovery; Sanofi partner",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ABSI",
+          "name": "Absci",
+          "mcap": "<$500M",
+          "thesis": "AI generative biology",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "GH",
+          "name": "Guardant Health",
+          "mcap": "$5-8B (mid)",
+          "thesis": "Liquid biopsy + AI diagnostics",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "VCYT",
+          "name": "Veracyte",
+          "mcap": "$3-5B (mid)",
+          "thesis": "Genomic AI diagnostics",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "PSNL",
+          "name": "Personalis",
+          "mcap": "<$500M",
+          "thesis": "Cancer genomics",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "NAUT",
+          "name": "Nautilus Biotechnology",
+          "mcap": "<$500M",
+          "thesis": "AI proteomics",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "HIMS",
+          "name": "Hims & Hers Health",
+          "mcap": "$10B+ (mid)",
+          "thesis": "AI-driven telehealth",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "DOCS",
+          "name": "Doximity",
+          "mcap": "$10B+ (mid)",
+          "thesis": "AI clinical workflow tools",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "DNA",
+          "name": "Ginkgo Bioworks",
+          "mcap": "$2-3B",
+          "thesis": "AI + biofoundry",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "RECUR",
+          "name": "(placeholder) — verify",
+          "note": "Speculative health-AI plays",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "LLY",
+          "name": "Eli Lilly",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        }
+      ]
+    },
+    "specialty_defense_kinetics_hypersonics": {
+      "thesis": "Hypersonics + electronic warfare + tactical comms + munitions. DoD spending tailwind. Sub-mid cap exposure layer.",
+      "tickers": [
+        {
+          "ticker": "MRCY",
+          "name": "Mercury Systems",
+          "mcap": "$2-3B",
+          "thesis": "Mission-critical processing for DoD",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "HEI",
+          "name": "HEICO",
+          "mcap": "$30B+ (mid-large)",
+          "thesis": "Defense + aerospace specialty parts",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "LDOS",
+          "name": "Leidos",
+          "mcap": "$25B+ (mid-large)",
+          "thesis": "DoD digital + AI services",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "BAH",
+          "name": "Booz Allen Hamilton",
+          "mcap": "$15B+ (mid-large)",
+          "thesis": "Defense AI/cyber integrator",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ELBT",
+          "name": "Elbit Systems",
+          "mcap": "$15B+ (mid-large)",
+          "thesis": "Israeli defense electronics",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "PRCH",
+          "name": "Powerfleet (etc — verify)",
+          "note": "Verify",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "VLN",
+          "name": "Valens",
+          "note": "see edge_ai",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "KTOS",
+          "name": "Kratos Defense",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "AVAV",
+          "name": "AeroVironment",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist",
+          "thesis": "Source CSV had JPX (Tokyo Stock Exchange code, not a ticker). Corrected to AVAV on NASDAQ."
+        },
+        {
+          "ticker": "RTX",
+          "name": "RTX Corp",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "GE",
+          "name": "GE Aerospace",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "TTMI",
+          "name": "TTM Technologies",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "FEIM",
+          "name": "Frequency Electronics",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        }
+      ]
+    },
+    "battery_storage_data_center_power": {
+      "thesis": "AI data-center storage + grid stability + behind-the-meter power. Beneficiary of AI capex + energy mix shift.",
+      "tickers": [
+        {
+          "ticker": "STEM",
+          "name": "Stem Inc",
+          "mcap": "<$200M post-decline",
+          "thesis": "AI-driven energy storage software",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "FLNC",
+          "name": "Fluence Energy",
+          "mcap": "$1-2B",
+          "thesis": "Grid-scale battery storage",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ENPH",
+          "name": "Enphase Energy",
+          "mcap": "$15B+ (mid-large)",
+          "thesis": "Microinverters + storage",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "SEDG",
+          "name": "SolarEdge",
+          "mcap": "$3-5B",
+          "thesis": "Solar inverters + storage",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "GNRC",
+          "name": "Generac Holdings",
+          "mcap": "$10B+ (mid)",
+          "thesis": "Backup gen + data-center distributed power",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "VRT",
+          "name": "Vertiv Holdings",
+          "mcap": "$40B+ (mid-large)",
+          "thesis": "Data center cooling + power; AI tailwind",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ATKR",
+          "name": "Atkore",
+          "mcap": "$2-3B",
+          "thesis": "Electrical infrastructure for DC buildout",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "BLDP",
+          "name": "Ballard Power",
+          "mcap": "<$500M",
+          "thesis": "Hydrogen fuel cells",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "PLUG",
+          "name": "Plug Power",
+          "mcap": "$1-2B",
+          "thesis": "Hydrogen ecosystem",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "FCEL",
+          "name": "FuelCell Energy",
+          "mcap": "<$500M",
+          "thesis": "Stationary fuel cells",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ORA",
+          "name": "Ormat Technologies",
+          "mcap": "$4-5B",
+          "thesis": "Geothermal + storage",
+          "tier": "scout_monitor"
+        }
+      ]
+    },
+    "naval_maritime_autonomous": {
+      "thesis": "Naval autonomy (USVs, undersea drones) — Saronic, Anduril Dive, etc. private. Public exposure thin.",
+      "tickers": [
+        {
+          "ticker": "OPTT",
+          "name": "Ocean Power Technologies",
+          "mcap": "<$100M",
+          "thesis": "Wave-energy + maritime autonomous; DoD ONR contracts",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "HII",
+          "name": "Huntington Ingalls Industries",
+          "mcap": "$10B+ (mid-large)",
+          "thesis": "Naval shipbuilding + autonomy",
+          "tier": "scout_monitor"
+        }
+      ]
+    },
+    "voice_audio_video_ai": {
+      "thesis": "Voice, audio, generative video AI.",
+      "tickers": [
+        {
+          "ticker": "DLB",
+          "name": "Dolby Laboratories",
+          "mcap": "$8-10B (mid)",
+          "thesis": "Audio + generative AI exposure",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "VRRM",
+          "name": "Verra Mobility",
+          "mcap": "$4-6B",
+          "thesis": "AI traffic/safety video",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "HEAR",
+          "name": "Turtle Beach",
+          "mcap": "<$500M",
+          "thesis": "Audio + gaming AI",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "ROKU",
+          "name": "Roku",
+          "mcap": "$10-15B (mid)",
+          "thesis": "Streaming + AI ad-tech",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "RBLX",
+          "name": "Roblox",
+          "mcap": "$40B+ (mid-large)",
+          "thesis": "UGC + AI agents in gaming",
+          "tier": "scout_monitor"
+        }
+      ]
+    },
+    "quantum_compute": {
+      "thesis": "Quantum cycle had Dec 2024 inflection; cohort up 500-1000% in 90 days. Now wait-for-next-inflection mode.",
+      "tickers": [
+        {
+          "ticker": "ARQQ",
+          "name": "Arqit Quantum",
+          "mcap": "<$500M",
+          "thesis": "Quantum encryption / cyber adjacent",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "QTUM",
+          "name": "Defiance Quantum ETF",
+          "note": "Basket exposure alternative",
+          "tier": "hype_speculation"
+        },
+        {
+          "ticker": "IONQ",
+          "name": "IonQ",
+          "note": "Post-rally; covered in 2026-05-04 quantum dossier",
+          "tier": "scout_archive"
+        },
+        {
+          "ticker": "RGTI",
+          "name": "Rigetti",
+          "note": "Post-rally",
+          "tier": "scout_archive"
+        },
+        {
+          "ticker": "QBTS",
+          "name": "D-Wave",
+          "note": "Post-rally; annealing",
+          "tier": "scout_archive"
+        },
+        {
+          "ticker": "QUBT",
+          "name": "Quantum Computing Inc",
+          "note": "Micro/meme — avoid",
+          "tier": "scout_archive"
+        }
+      ]
+    },
+    "rare_earths_critical_materials_beyond_mp": {
+      "thesis": "Rare-earth supply diversification beyond MP. China export controls keep the thesis live.",
+      "tickers": [
+        {
+          "ticker": "UREE",
+          "name": "USA Rare Earth",
+          "mcap": "<$500M",
+          "thesis": "Domestic rare-earth + magnet supply",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "LYC.AX",
+          "name": "Lynas Rare Earths (foreign)",
+          "thesis": "Australian rare-earth #2 outside China",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "TMC",
+          "name": "TMC the metals company",
+          "mcap": "<$1B",
+          "thesis": "Seabed nodule mining; speculative timeline",
+          "tier": "scout_monitor"
+        },
+        {
+          "ticker": "MP",
+          "name": "MP Materials",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        }
+      ]
+    },
+    "mega_cap_ai_platform": {
+      "thesis": "Mega-cap consumer + cloud + AI platform owners. Search, social, cloud, foundation models, TPU/MTIA custom silicon. Defensible distribution + capital + data moats. Not a moonshot category but core thematic exposure.",
+      "tickers": [
+        {
+          "ticker": "GOOG",
+          "name": "Alphabet Class C",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "META",
+          "name": "Meta Platforms",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        }
+      ]
+    },
+    "cross_thematic_industrial": {
+      "thesis": "Industrial / legacy / cross-thematic names retained for adjacency or diversification. Not part of the core AI thesis but tracked because user has a specific thesis or hedge rationale.",
+      "tickers": [
+        {
+          "ticker": "EG",
+          "name": "Everest Group",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "CAT",
+          "name": "Caterpillar",
+          "exchange": "NYSE",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "5801.T",
+          "name": "Furukawa Electric",
+          "exchange": "TSE",
+          "region": "JP",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "7220.T",
+          "name": "Musashi Seimitsu",
+          "exchange": "TSE",
+          "region": "JP",
+          "tier": "core_watchlist"
+        }
+      ]
+    },
+    "ai_compute_semis": {
+      "thesis": "(thesis pending)",
+      "tickers": [
+        {
+          "ticker": "AMD",
+          "name": "Advanced Micro Devices",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "NVDA",
+          "name": "Nvidia",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "ARM",
+          "name": "Arm Holdings",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "MU",
+          "name": "Micron Technology",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist",
+          "thesis": "Source CSV had MTE (wrong). Corrected to MU."
+        },
+        {
+          "ticker": "SNDK",
+          "name": "SanDisk",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist",
+          "thesis": "NAND / storage. Memory-cycle proxy alongside MU."
+        },
+        {
+          "ticker": "INTC",
+          "name": "Intel",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist"
+        },
+        {
+          "ticker": "SMSN.L",
+          "name": "Samsung Electronics GDR",
+          "exchange": "LSE",
+          "region": "UK",
+          "tier": "core_watchlist",
+          "thesis": "ISIN US7960508882. USD-denominated GDR (1 GDR is approx 25 common shares, around $3,700/sh). Sponsor: Citibank. Verify tradability via your broker's LSE access. Samsung is the #1 competitor to MU in DRAM / NAND / HBM. HBM3E / HBM4 qualification news at NVIDIA is a direct cross-read on memory-cycle thesis."
+        },
+        {
+          "ticker": "QCOM",
+          "name": "Qualcomm",
+          "exchange": "NASDAQ",
+          "region": "US",
+          "tier": "core_watchlist",
+          "thesis": "AI semis: AI200 (2026) / AI250 (2027) data center chips, Snapdragon Digital Chassis for automotive autonomy, handset market exposure. Q2 FY26 printed 2026-04-29 with EPS beat / rev miss / soft Q3 guide. Track auto revenue trajectory plus AI200 customer traction beyond HUMAIN."
+        }
+      ]
+    }
+  },
+  "pre_ipo_watch": {
+    "purpose": "Track private companies on near-term IPO track. When they file S-1 or IPO, evaluate immediately. Several have strong strategic backers and would slot into scout tier on day-1.",
+    "candidates": [
+      {
+        "company": "Anduril Industries",
+        "theme": "Drone/autonomous defense",
+        "backers": "Founders Fund, A16Z, Peter Thiel",
+        "ipo_window": "2026 candidate",
+        "notes": "Most anticipated defense-tech IPO since Palantir"
+      },
+      {
+        "company": "Skydio",
+        "theme": "Drones (Blue UAS)",
+        "backers": "A16Z, Linse, IVP",
+        "ipo_window": "2026 candidate"
+      },
+      {
+        "company": "Shield AI",
+        "theme": "AI-piloted drones",
+        "backers": "A16Z, Riot Ventures",
+        "ipo_window": "2026-2027"
+      },
+      {
+        "company": "Saronic",
+        "theme": "USV / naval autonomy",
+        "backers": "A16Z, Caffeinated Capital",
+        "ipo_window": "2026-2027"
+      },
+      {
+        "company": "Cerebras Systems",
+        "theme": "Wafer-scale AI compute",
+        "backers": "G42, Benchmark, Foundation Capital",
+        "ipo_window": "S-1 filed; pending"
+      },
+      {
+        "company": "Figure AI",
+        "theme": "Humanoid robots",
+        "backers": "MSFT, NVIDIA, OpenAI, Bezos Expeditions, Jeff Bezos",
+        "ipo_window": "2026-2027"
+      },
+      {
+        "company": "Apptronik",
+        "theme": "Humanoid robots (Apollo)",
+        "backers": "Mercedes-Benz partnership",
+        "ipo_window": "Mid-term"
+      },
+      {
+        "company": "Sanctuary AI",
+        "theme": "Humanoid robots",
+        "backers": "Magna",
+        "ipo_window": "Mid-term"
+      },
+      {
+        "company": "Anthropic",
+        "theme": "Foundation LLMs",
+        "backers": "Amazon ($8B+), Google",
+        "ipo_window": "2026-2027 candidate; would be major event"
+      },
+      {
+        "company": "Databricks",
+        "theme": "Data + AI platform",
+        "backers": "Andreessen Horowitz",
+        "ipo_window": "S-1 candidate"
+      },
+      {
+        "company": "Stripe",
+        "theme": "Fintech + AI",
+        "ipo_window": "Long-running watch"
+      },
+      {
+        "company": "SpaceX",
+        "theme": "Space launch + Starlink",
+        "ipo_window": "Starlink spin candidate"
+      },
+      {
+        "company": "Hadrian",
+        "theme": "AI-driven precision manufacturing for defense/space",
+        "backers": "A16Z, Founders Fund",
+        "ipo_window": "Mid-term"
+      },
+      {
+        "company": "Mistral AI",
+        "theme": "European LLM",
+        "backers": "A16Z, General Catalyst",
+        "ipo_window": "EU IPO candidate"
+      }
+    ]
+  },
+  "candidate_count_summary": {
+    "total_tickers": 197,
+    "by_tier": {
+      "scout_active": 14,
+      "scout_monitor": 102,
+      "hype_speculation": 21,
+      "scout_archive": 7,
+      "core_watchlist": 53
+    },
+    "themes_covered": 19,
+    "pre_ipo_watch_count": 14,
+    "last_rebuild": "2026-05-27"
+  },
+  "integration_points": {
+    "invest_daily_worker_b_scout_layer": "Worker B's news/movers scan includes scout_active tier — flag any >5% move or named catalyst with one-line note. Lightweight, doesn't drive action.",
+    "invest_weekly_scout_sweep": "Weekly run: full scout sweep — re-screen scout_monitor for catalyst materialization, surface fresh entrants via web search (NVentures portfolio updates, defense-tech filings, AI-pivot announcements, IPO filings). Update tier classifications.",
+    "monthly_archive_review": "Clean scout_archive: graduate or drop based on 30-day tape.",
+    "quarterly_13f_cross_reference": "Post-13F drop: cross-reference SA-LP and other tracked-fund 13Fs against scout_active for confirmation signals.",
+    "pre_ipo_watch_protocol": "When a watched private company files S-1 → spawn immediate evaluation as a potential scout_active entry post-IPO; assess via mini-dossier"
+  },
+  "review_cadence": "core_watchlist: daily Worker B full scan. scout_active: daily lightweight check. scout_monitor: weekly. hype_speculation: weekly with hard 90-day time-box. scout_archive: monthly cleanup review. pre_ipo_watch: continuous + immediate on S-1 filings."
+}

@@ -1,0 +1,35 @@
+# Personal state — never commit
+portfolio.json
+trades.log.jsonl
+tranches.json
+event_trades.json
+
+# Broker artifacts
+snapshots/
+*.png
+!docs/*.png
+
+# Research outputs (your generated notes contain positions/decisions)
+research/
+
+# Persistent memory
+memory/
+MEMORY.md
+
+# Python venv if used for charting
+.venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude Code workspace artifacts
+.claude/projects/
+.claude/local_settings.json

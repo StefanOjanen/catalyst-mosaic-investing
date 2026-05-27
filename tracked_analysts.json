@@ -1,0 +1,129 @@
+{
+  "purpose": "Track specific sell-side analysts whose PT changes + thesis revisions carry signal weight for this book. Sell-side coverage is usually noise (consensus following price) but a small subset of named analysts drives sector inflections — their out-of-consensus calls move stocks and reset Street thinking. NOT a primary trade driver, but a confirming/disconfirming signal layer in /invest_daily Worker B and /invest:weekly synthesis.",
+  "framework": {
+    "selection_criteria": [
+      "Analyst's PT revisions historically move the stock >5% on day-of (real price impact)",
+      "Out-of-consensus calls (not just price-following)",
+      "Coverage overlap with your book's themes (AI-infra, AI-power, semis, memory)",
+      "Track record of being early on cycle inflections",
+      "Identified by name in industry press (not anonymous house view)"
+    ],
+    "signal_quality_tiering": {
+      "tier_1": "Street-moving — their calls reset consensus; multiple firms follow within 24-48h",
+      "tier_2": "Sector specialist — their thesis nuance is high-signal even if PT doesn't move tape",
+      "tier_3": "Reference — track for calibration, lower trade weight"
+    },
+    "caveats": [
+      "Sell-side PTs are 12-month targets — short-term trades shouldn't anchor to them",
+      "Analyst's house view ≠ analyst's actual conviction (look at the note specifics, not the headline)",
+      "Big PT revisions often LAG price (analyst forced to catch up) vs LEAD (out-of-consensus call) — distinguish",
+      "Conflicts of interest exist (IB relationships, etc.); not all calls are clean research"
+    ]
+  },
+  "tracked_analysts": [
+    {
+      "id": "timothy-arcuri-ubs",
+      "name": "Timothy Arcuri",
+      "firm": "UBS",
+      "title": "Managing Director, Semiconductor & Semiconductor Capital Equipment",
+      "coverage_universe_arcuri": ["MU", "NVDA", "AVGO", "AMD", "INTC", "AMAT", "KLAC", "LRCX", "QCOM", "ARM", "MRVL"],
+      "coverage_ubs_firm_other_analysts": {
+        "TSM": "Covered by Randy Abrams (UBS Asia semi)",
+        "ASML": "Covered by Francois-Xavier Bouvignies (UBS European semi equipment)"
+      },
+      "signal_tier": "tier_1",
+      "track_record_notes": "Known semiconductor specialist; covered MU through multiple cycles. Track record of out-of-consensus calls on memory cycle inflections.",
+      "current_pt_baseline_2026_05_26": [
+        {"ticker": "MU", "rating": "Buy", "pt_usd": 1625, "last_revision": "2026-05-26", "thesis_note": "LTAs locking 60-70% server DDR5, EPS >$100 through CY2029, $400B FCF 2027-2029, P/E re-rate to NVDA-multiple", "source": "https://247wallst.com/investing/2026/05/26/micron-jumps-10-after-price-target-raise-from-535-to-1625-heres-whats-driving-wall-streets-most-bullish-target/"},
+        {"ticker": "NVDA", "rating": "Buy", "pt_usd": 280, "last_revision": "2026-05-21", "thesis_note": "Pre-print setup; $81B Q1 + $90-91B Q2 guide; 'marked apathy' = asymmetric setup", "source": "https://www.cnbc.com/2026/05/14/ubs-hikes-nvidia-price-target-sees-strong-earnings-report-ahead.html"},
+        {"ticker": "AVGO", "rating": "Buy", "pt_usd": 490, "last_revision": "2026-05-18", "thesis_note": "Accelerating TPU demand; custom ASIC cycle durability", "source": "https://finance.yahoo.com/news/ubs-lifts-price-target-broadcom-115628284.html"},
+        {"ticker": "AMD", "rating": "Buy", "pt_usd": 330, "last_revision": "2026-01-26", "thesis_note": "MI450 demand strength; DC earnings power; H2 2026 attractive entry. Note: subsequent sources cite $310 (March) reiterate; possible un-syndicated post-April revision", "source": "https://www.insidermonkey.com/blog/heres-why-ubs-lowered-advanced-micro-devices-amd-price-target-1711427/"},
+        {"ticker": "INTC", "rating": "Neutral", "pt_usd": 83, "last_revision": "2026-04-24", "thesis_note": "No conviction; recovery path uncertain", "source": "https://www.benzinga.com/analyst-stock-ratings/analyst/586bc4bc351b9b0001ab735d/timothy-arcuri"},
+        {"ticker": "AMAT", "rating": "Buy", "pt_usd": 515, "last_revision": "2026-05-15", "thesis_note": "WFE supercycle; $27 EPS by CY28; supply chain ramp is the binding constraint", "source": "https://www.marketscreener.com/news/ubs-adjusts-price-target-on-applied-materials-to-515-from-480-maintains-buy-rating-ce7f5bd2d181f123"},
+        {"ticker": "KLAC", "rating": "Neutral", "pt_usd": 1835, "last_revision": "2026-04-21", "thesis_note": "Memory under-exposure vs peers; 'struggling to keep up' with memory-driven WFE growth", "source": "https://www.gurufocus.com/news/8806933/klac-maintained-by-ubs-price-target-raised-to-1835"},
+        {"ticker": "LRCX", "rating": "Buy", "pt_usd": 275, "last_revision": "2026-01-29", "thesis_note": "Broad WFE exposure; memory recovery tailwind. May be due for post-earnings revision.", "source": "https://www.tipranks.com/news/the-fly/lam-research-price-target-raised-to-275-from-255-at-ubs-thefly"},
+        {"ticker": "QCOM", "rating": "Neutral", "pt_usd": 150, "last_revision": "2026-04-21", "thesis_note": "Rising memory prices = handset demand headwind; deteriorating fundamentals", "source": "https://247wallst.com/investing/2026/04/21/ubs-trims-qualcomms-target-to-150-why-rising-memory-prices-are-becoming-a-chip-stock-headwind/"},
+        {"ticker": "ARM", "rating": "Buy", "pt_usd": 245, "last_revision": "2026-05-05", "thesis_note": "CPU-to-XPU attach rate 5x by 2030; ARM-based head nodes dominant in XPU racks", "source": "https://www.investing.com/news/analyst-ratings/ubs-raises-arm-holdings-stock-price-target-on-ai-server-growth-outlook-93CH-4660504"},
+        {"ticker": "MRVL", "rating": "Buy", "pt_usd": 195, "last_revision": "2026-05-04", "thesis_note": "Data center AI infra; custom silicon + CPO positioning", "source": "https://www.benzinga.com/analyst-stock-ratings/analyst/586bc4bc351b9b0001ab735d/timothy-arcuri"}
+      ],
+      "baseline_synthesis": "11 names covered by Arcuri at UBS. **9 Buy / 2 Neutral.** Bullish bias on AI capex beneficiaries (NVDA/AVGO/AMD/ARM/MRVL), WFE supercycle (AMAT/LRCX), memory inflection (MU = Street-high). Cautious on lagging memory exposure (KLAC) and handset/value semis (QCOM/INTC). Implied portfolio framing: long the AI infra winners + WFE + memory; underweight the legacy / handset / non-AI semis.",
+      "why_track": "Made the most aggressive single-revision call on MU in 2026 (PT $535 → $1,625 on 2026-05-26, +204%, Street-high by wide margin). Thesis is structural (LTAs, P/E re-rating to NVDA-multiple, $400B FCF 2027-2029) — if right, it reframes memory as utility-like cash flow rather than commodity cycle. Worth tracking because (a) the call broke a price target ceiling no other firm had touched, and (b) multiple firms followed within hours suggesting institutional respect.",
+      "recent_calls_tracked": [
+        {
+          "date": "2026-05-26",
+          "ticker": "MU",
+          "action": "PT raise $535 → $1,625",
+          "rating": "Buy maintained",
+          "thesis_summary": "Long-term supply agreements (3-5yr) with MSFT Azure / Google Cloud / AWS lock 60-70% of server DDR5 supply. EPS projected >$100 through CY2029. Cumulative FCF $400B+ 2027-2029. Multiple re-rating argument: 'no reason why MU should trade differently than NVDA in terms of P/E.' Structural call, not cyclical.",
+          "stock_impact_day_of": "+12% intraday to ATH $891.27",
+          "street_followers_24_72h": [
+            "BofA: PT $500 → $950",
+            "Deutsche Bank: PT raised to $1,000",
+            "Melius Research: $1,100 (already at level pre-revision)",
+            "HSBC: $1,100 (already at level pre-revision)",
+            "Mizuho (Rakesh): reiterate Outperform $800"
+          ],
+          "calibration_status": "OPEN — too early to assess. Will revisit post MU Q3 FY26 print 2026-07-01 AMC. Bull-case validation marker: Q4 guide ≥$36B + HBM4 commentary reassuring. Bear-case marker: Q4 guide soft + HBM4 share concession.",
+          "source_urls": [
+            "https://247wallst.com/investing/2026/05/26/micron-jumps-10-after-price-target-raise-from-535-to-1625-heres-whats-driving-wall-streets-most-bullish-target/",
+            "https://www.tipranks.com/news/article/micron-mu-stock-gets-new-street-high-price-target-from-top-analyst-timothy-arcuri-heres-why",
+            "https://seekingalpha.com/news/4596810-micron-jumps-as-ubs-raises-price-target-to-new-wall-street-high-on-memory-momentum"
+          ]
+        }
+      ],
+      "data_sources_priority_order": [
+        "https://www.ubs.com/global/en/investment-bank/research.html — UBS official research portal (institutional access required)",
+        "TipRanks Arcuri analyst page",
+        "StreetInsider for live PT change alerts",
+        "Benzinga ratings feed",
+        "X/Twitter mentions @TimArcuri (verify handle)"
+      ],
+      "monitoring_protocol": "Worker B daily checks for new UBS notes on any held name or watchlist semi name. Tier 1 signal weight — flag as '📍 ARCURI PT CHANGE — [ticker]' in daily reports. New PT calls warrant inclusion in next /invest_weekly synthesis."
+    }
+  ],
+  "candidate_analysts_to_potentially_add": [
+    {
+      "name": "Stacy Rasgon",
+      "firm": "Bernstein",
+      "rationale": "Semi sector specialist; consistently cited; X presence @stacyrasgon. Quality nuance on cycle reads."
+    },
+    {
+      "name": "Vivek Arya",
+      "firm": "Bank of America",
+      "rationale": "AI semis specialist; covers NVDA + AMD; BofA's $950 MU PT raise was likely his note."
+    },
+    {
+      "name": "Vijay Rakesh",
+      "firm": "Mizuho",
+      "rationale": "Already cited in MU coverage (PT $800 reiterate). Memory + AI semis specialist."
+    },
+    {
+      "name": "Harlan Sur",
+      "firm": "JPMorgan",
+      "rationale": "Semi sector; JPM TMT conference host."
+    },
+    {
+      "name": "C.J. Muse",
+      "firm": "Cantor Fitzgerald (prev Evercore)",
+      "rationale": "Semi cap equipment + AI-infra specialist."
+    },
+    {
+      "name": "Dylan Patel",
+      "firm": "SemiAnalysis (independent, not sell-side)",
+      "rationale": "Already referenced in MU dossier. NOT a sell-side analyst but independent research — different category. Could create tracked_independent_research.json or fold into here with tier distinction."
+    }
+  ],
+  "integration_points": {
+    "invest_daily_worker_b": "Each Worker B run scans for PT changes from tracked_analysts.json analysts on held + watchlist names. Flag as '📍 ARCURI PT CHANGE — [ticker] [old PT] → [new PT]' with stock impact + Street follower count. Tier 1 analyst PT changes warrant explicit callout in daily TL;DR.",
+    "invest_weekly_synthesis": "Weekly run: aggregate all tracked-analyst calls in the week. Distinguish 'leading calls' (PT changes ahead of price action) vs 'following calls' (PT chasing existing momentum).",
+    "calibration_log": "Post each material print/event on covered names, log whether tracked-analyst PT/thesis was directionally correct. Build track record over time. Calls that prove correct vs incorrect feed into signal_tier reassessment annually.",
+    "new_skill_proposal": "/invest_analyst [ID] — pulls latest notes from a specific analyst across their coverage, computes hit rate vs subsequent price action."
+  },
+  "maintenance_protocol": {
+    "add_analyst_criteria": "Only add when an analyst meets selection_criteria (especially: PT revisions move stocks >5% day-of). Default is to NOT add — quality > quantity. Currently 1 tracked.",
+    "remove_analyst_criteria": "Remove if (a) leaves coverage, (b) their out-of-consensus calls stop landing, (c) firm reorganizes coverage. Don't remove on a single bad call — calibrate over 4+ quarters.",
+    "review_cadence": "Quarterly review of tracked analysts' call quality vs subsequent price action. Annual review of full universe vs candidates."
+  },
+  "last_updated": "2026-05-26",
+  "first_added": "2026-05-26"
+}
