@@ -2,6 +2,40 @@
 
 > A solo-PM framework that runs your book like a tech-specialist concentrated-long pod shop. Multi-agent research, pre-committed playbooks, mechanical exits.
 
+## 🖥️ Dashboard
+
+A local, Bloomberg-terminal-styled **web cockpit** for the framework — glance at your live-marked book, drill into risk and catalysts, and run the `/invest:*` skills from the browser. Runs entirely on `localhost`; ships with fictional sample data so it works the moment you clone.
+
+![Catalyst Mosaic — Holdings](dashboard/docs/screenshots/holdings.png)
+
+**Highlights**
+
+- **Live-marked book** — holdings and totals recompute from live prices automatically; you only re-enter share counts when you trade.
+- **Risk & exposure** — correlation heatmap, effective-bets, portfolio β, a benchmark-shock scenario, and an opportunity-cost redeploy ranker.
+- **Catalyst command-center** — earnings countdowns with pre-committed exit rules, plus the full calendar.
+- **Import wizard** — drop or paste a broker screenshot, PDF, CSV or XLSX → Claude parses it into an editable preview → saves your portfolio (previous file backed up first).
+- **Assistant** — the `/invest:*` skills stream live; write-skills are gated by a snapshot + Keep/Revert diff review.
+
+<table>
+  <tr>
+    <td width="50%"><img src="dashboard/docs/screenshots/charts.png" alt="Charts — performance, allocation, P&L"></td>
+    <td width="50%"><img src="dashboard/docs/screenshots/risk.png" alt="Risk — correlation heatmap, scenario, redeploy ranker"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dashboard/docs/screenshots/catalysts.png" alt="Catalysts — command center + calendar"></td>
+    <td width="50%"><img src="dashboard/docs/screenshots/setup.png" alt="Setup — screenshot/CSV/PDF import wizard"></td>
+  </tr>
+</table>
+
+```bash
+cd dashboard/server && npm install && npm run dev   # API → http://127.0.0.1:4317
+cd dashboard/web    && npm install && npm run dev   # UI  → http://127.0.0.1:5173
+```
+
+Full docs: [`dashboard/README.md`](dashboard/README.md) · [release notes](dashboard/RELEASE_NOTES.md)
+
+---
+
 ## Philosophy
 
 Most retail investors lose to two things: poor information synthesis (mosaic gaps) and behavioral failure at the catalyst (holding through post-print gap-ups expecting more, freezing on miss, sizing on euphoria). This framework attacks both.
@@ -312,7 +346,3 @@ The slash commands, multi-agent orchestration, pre-committed exit rules, and PM 
 ## Disclaimer
 
 Not investment advice. Personal research framework. All decisions are the user's. Past performance does not predict future returns. Concentrated single-name positions carry significant downside risk. Pre-committed exit rules exist because the most common failure mode is holding through post-print gap-ups expecting more, but rules are only as good as their execution. The framework reduces behavioral error; it does not eliminate market risk.
-
-## Dashboard (web UI)
-
-A local web dashboard lives in [`dashboard/`](dashboard/) — a terminal-styled cockpit that visualizes your book (holdings, charts, risk/correlation, catalysts, tranches, research, trades, lists) and runs the `/invest:*` skills from the browser, with a screenshot / CSV / PDF / XLSX **import wizard** and live price marking. It ships with fictional sample data and runs entirely on `localhost`. See [`dashboard/README.md`](dashboard/README.md) and the [release notes](dashboard/RELEASE_NOTES.md).

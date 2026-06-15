@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchGoals, fetchPortfolio, type Goal, type Portfolio } from '../lib/api';
+import { fetchGoals, type Goal, type Portfolio } from '../lib/api';
+import { useLivePortfolio } from '../lib/useLivePortfolio';
 import { fmtEur } from '../lib/format';
 import { Card } from './Card';
 
@@ -67,7 +68,7 @@ function GoalRow({ g, pf }: { g: Goal; pf: Portfolio }) {
 
 export function GoalsPanel() {
   const { data: goals, isLoading, error } = useQuery({ queryKey: ['goals'], queryFn: fetchGoals });
-  const { data: pf } = useQuery({ queryKey: ['portfolio'], queryFn: fetchPortfolio });
+  const { data: pf } = useLivePortfolio();
 
   if (isLoading) return <Card title="Goals"><div className="skeleton h-16" /></Card>;
   if (error) return null; // goals.json optional — hide on error
