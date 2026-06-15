@@ -256,3 +256,21 @@ export interface QuotesResp {
 }
 export const fetchQuotes = (symbols: string[]) =>
   getJson<QuotesResp>(`/api/quotes?symbols=${encodeURIComponent(symbols.join(','))}`);
+
+export interface ParsedTrade {
+  action?: 'buy' | 'sell';
+  ticker?: string;
+  name?: string;
+  shares?: number | null;
+  price_local?: number | null;
+  price_ccy?: string;
+  date?: string | null;
+  fees?: number | null;
+}
+export interface TradeResult {
+  portfolio: Portfolio;
+  entry: { event: string; net_eur: number; realized_pnl_eur?: number; [k: string]: unknown };
+}
+export const tradeParse = (file: { filename: string; mimeType: string; dataBase64: string }) =>
+  postJson<ParsedTrade>('/api/trade/parse', file);
+export const tradeLog = (payload: unknown) => postJson<TradeResult>('/api/trade/log', payload);

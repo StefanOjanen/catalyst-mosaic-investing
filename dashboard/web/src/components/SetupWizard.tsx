@@ -282,8 +282,9 @@ export function SetupWizard() {
             dot), so market value, weights and P&amp;L update on their own. You don't re-type prices.
           </li>
           <li>
-            <span className="text-slate-100">After you buy or sell:</span> update only the <em>share count</em> (and cost
-            basis for a buy) here, or re-import a fresh broker screenshot — that's the one thing to keep current.
+            <span className="text-slate-100">After you buy or sell:</span> go to <strong>Trades → Log a trade</strong> and
+            paste the confirmation screenshot (or type it) — shares, cash and realized P&amp;L update automatically. Or
+            re-import a fresh broker screenshot here.
           </li>
           <li>
             <span className="text-slate-100">Around earnings:</span> use <code className="text-[var(--accent-2)]">/invest:preprint</code> /{' '}

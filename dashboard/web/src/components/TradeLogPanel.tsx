@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchTradeLog, type TradeLogEntry } from '../lib/api';
 import { fmtEur, fmtNum } from '../lib/format';
 import { Card } from './Card';
+import { TradeForm } from './TradeForm';
 
 function Entry({ e }: { e: TradeLogEntry }) {
   const [open, setOpen] = useState(false);
@@ -46,15 +47,38 @@ function Entry({ e }: { e: TradeLogEntry }) {
 
 export function TradeLogPanel() {
   const { data, isLoading, error } = useQuery({ queryKey: ['trade-log'], queryFn: fetchTradeLog });
-  if (isLoading) return <Card title="Trade log">Loading…</Card>;
-  if (error) return <Card title="Trade log"><span className="text-rose-400">{String(error)}</span></Card>;
+  const [logging, setLogging] = useState(false);
+
+  const logBtn = (
+    <button onClick={() => setLogging(true)} className="btn btn-accent text-[11px]">
+      + Log a trade
+    </button>
+  );
+
+  if (isLoading) return <Card title="Trade log" right={logBtn}>Loading…</Card>;
+  if (error)
+    return (
+      <Card title="Trade log" right={logBtn}>
+        <span className="text-rose-400">{String(error)}</span>
+        {logging && <TradeForm onClose={() => setLogging(false)} />}
+      </Card>
+    );
   return (
-    <Card title="Trade log" right={<span>{data?.length ?? 0} entries</span>}>
+    <Card
+      title="Trade log"
+      right={
+        <div className="flex items-center gap-3">
+          <span>{data?.length ?? 0} entries</span>
+          {logBtn}
+        </div>
+      }
+    >
       <div className="space-y-2">
         {(data ?? []).map((e, i) => (
           <Entry key={i} e={e} />
         ))}
       </div>
+      {logging && <TradeForm onClose={() => setLogging(false)} />}
     </Card>
   );
 }

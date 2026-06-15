@@ -50,7 +50,7 @@ function detectKind(mimeType, filename) {
   return 'text';
 }
 
-function stripJson(text) {
+export function stripJson(text) {
   if (!text) return null;
   let t = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
   const start = t.indexOf('{');
@@ -63,7 +63,7 @@ function stripJson(text) {
   }
 }
 
-function runClaude(prompt) {
+export function runClaude(prompt) {
   return new Promise((resolve, reject) => {
     const args = [
       '-p',
@@ -96,7 +96,10 @@ function runClaude(prompt) {
   });
 }
 
-export async function parseImport({ filename, mimeType, dataBase64 }) {
+// Turn an uploaded file into a prompt fragment for Claude. Returns the text to
+// embed (CSV content) or a "read this path" instruction (image/PDF), plus a
+// cleanup() to remove any temp file. Shared by the import and trade flows.
+export async function fileToExtra({ filename, mimeType, dataBase64 }) {
   if (!dataBase64) {
     const e = new Error('no file data');
     e.status = 400;
@@ -104,25 +107,30 @@ export async function parseImport({ filename, mimeType, dataBase64 }) {
   }
   const buf = Buffer.from(dataBase64, 'base64');
   const kind = detectKind(mimeType, filename);
-  let prompt;
-  let tmpPath = null;
+  if (kind === 'csv') {
+    return { extra: 'Here is the CSV content:\n\n' + buf.toString('utf8').slice(0, 20000), cleanup: () => {} };
+  }
+  if (kind === 'xlsx') {
+    const wb = XLSX.read(buf, { type: 'buffer' });
+    const csv = XLSX.utils.sheet_to_csv(wb.Sheets[wb.SheetNames[0]]);
+    return { extra: 'Here is the spreadsheet (first sheet) as CSV:\n\n' + csv.slice(0, 20000), cleanup: () => {} };
+  }
+  if (kind === 'image' || kind === 'pdf') {
+    const ext = (filename || '').split('.').pop() || (kind === 'pdf' ? 'pdf' : 'png');
+    const tmpPath = path.join(UPLOAD_DIR, `up-${Date.now()}.${ext}`);
+    await fsp.writeFile(tmpPath, buf);
+    return {
+      extra: `Read the file at this absolute path and extract from it: ${tmpPath}`,
+      cleanup: () => fsp.unlink(tmpPath).catch(() => {}),
+    };
+  }
+  return { extra: 'Here is the content:\n\n' + buf.toString('utf8').slice(0, 20000), cleanup: () => {} };
+}
+
+export async function parseImport(file) {
+  const { extra, cleanup } = await fileToExtra(file);
   try {
-    if (kind === 'csv') {
-      prompt = extractionPrompt('Here is the CSV content:\n\n' + buf.toString('utf8').slice(0, 20000));
-    } else if (kind === 'xlsx') {
-      const wb = XLSX.read(buf, { type: 'buffer' });
-      const csv = XLSX.utils.sheet_to_csv(wb.Sheets[wb.SheetNames[0]]);
-      prompt = extractionPrompt('Here is the spreadsheet (first sheet) as CSV:\n\n' + csv.slice(0, 20000));
-    } else if (kind === 'image' || kind === 'pdf') {
-      const ext = (filename || '').split('.').pop() || (kind === 'pdf' ? 'pdf' : 'png');
-      tmpPath = path.join(UPLOAD_DIR, `import-${Date.now()}.${ext}`);
-      await fsp.writeFile(tmpPath, buf);
-      prompt = extractionPrompt(`Read the file at this absolute path and extract the portfolio from it: ${tmpPath}`);
-    } else {
-      prompt = extractionPrompt('Here is the content:\n\n' + buf.toString('utf8').slice(0, 20000));
-    }
-    const resultText = await runClaude(prompt);
-    const parsed = stripJson(resultText);
+    const parsed = stripJson(await runClaude(extractionPrompt(extra)));
     if (!parsed || !Array.isArray(parsed.holdings)) {
       const e = new Error('Could not extract holdings from the file');
       e.status = 422;
@@ -130,7 +138,7 @@ export async function parseImport({ filename, mimeType, dataBase64 }) {
     }
     return parsed;
   } finally {
-    if (tmpPath) fsp.unlink(tmpPath).catch(() => {});
+    cleanup();
   }
 }
 

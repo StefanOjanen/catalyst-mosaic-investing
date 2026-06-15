@@ -7,6 +7,7 @@ First release of the **web dashboard** for the Catalyst Mosaic investing framewo
 - **Live-marked book.** Holdings and the Total-Book hero recompute from live prices (shares × live quote × FX) every 60s — you only ever re-enter share counts when you trade.
 - **One-click daily flow.** A prominent **Run daily check** action (with last-run date + jump to the latest report); the rest of the skills are grouped by flow — Explore / Catalysts / Review / Manage.
 - **Import wizard.** Drop, click, or paste (⌘V) a broker **screenshot, image, PDF, CSV, or XLSX** → Claude extracts holdings into an editable preview → save to `portfolio.json`. The previous file is backed up first.
+- **Log completed trades.** Paste a trade-confirmation screenshot (or type it) → shares, cash and realized P&L update and a new entry is appended to the trade log, with a live effect preview and a pre-write backup.
 
 ## What's included
 
@@ -17,7 +18,7 @@ First release of the **web dashboard** for the Catalyst Mosaic investing framewo
 - **Catalysts** — earnings command-center cards (countdown, pre-committed exit rules, daily-σ reference) + a collapsible full calendar.
 - **Tranches** — target vs current weights, thesis + break-triggers per holding.
 - **Research** — markdown viewer for `research/daily/*`.
-- **Trades** — append-only trade log.
+- **Trades** — append-only trade log + **Log a trade** (paste a confirmation screenshot or type it → updates `portfolio.json` + the log, with a pre-write backup).
 - **Lists** — sortable watchlist (held-first / ticker / name / exchange) + tracked funds & analysts.
 - **Setup** — the import wizard + "keep it up to date" guidance.
 

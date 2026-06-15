@@ -7,6 +7,7 @@ import { getPrices } from './prices.js';
 import { getAnalytics } from './risk.js';
 import { getQuotes } from './quotes.js';
 import { parseImport, commitImport } from './import.js';
+import { parseTrade, logTrade } from './trade.js';
 import { dataBus, startWatcher } from './watcher.js';
 
 const app = express();
@@ -123,6 +124,25 @@ app.post('/api/import/parse', async (req, res) => {
 app.post('/api/import/commit', async (req, res) => {
   try {
     res.json(await commitImport(req.body || {}));
+  } catch (err) {
+    res.status(err.status || 500).json({ error: err.message });
+  }
+});
+
+// --- Log a completed trade (parse screenshot, preview effect, or commit) ---
+
+app.post('/api/trade/parse', async (req, res) => {
+  try {
+    res.json(await parseTrade(req.body || {}));
+  } catch (err) {
+    res.status(err.status || 502).json({ error: err.message });
+  }
+});
+
+app.post('/api/trade/log', async (req, res) => {
+  try {
+    const commit = req.body?.preview !== true;
+    res.json(await logTrade(req.body || {}, { commit }));
   } catch (err) {
     res.status(err.status || 500).json({ error: err.message });
   }
