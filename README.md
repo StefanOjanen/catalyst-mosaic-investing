@@ -312,3 +312,7 @@ The slash commands, multi-agent orchestration, pre-committed exit rules, and PM 
 ## Disclaimer
 
 Not investment advice. Personal research framework. All decisions are the user's. Past performance does not predict future returns. Concentrated single-name positions carry significant downside risk. Pre-committed exit rules exist because the most common failure mode is holding through post-print gap-ups expecting more, but rules are only as good as their execution. The framework reduces behavioral error; it does not eliminate market risk.
+
+## Dashboard (web UI)
+
+A local web dashboard lives in [`dashboard/`](dashboard/) — a terminal-styled cockpit that visualizes your book (holdings, charts, risk/correlation, catalysts, tranches, research, trades, lists) and runs the `/invest:*` skills from the browser, with a screenshot / CSV / PDF / XLSX **import wizard** and live price marking. It ships with fictional sample data and runs entirely on `localhost`. See [`dashboard/README.md`](dashboard/README.md) and the [release notes](dashboard/RELEASE_NOTES.md).

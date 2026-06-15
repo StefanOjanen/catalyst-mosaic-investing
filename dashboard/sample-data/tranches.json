@@ -1,0 +1,41 @@
+{
+  "last_updated": "2026-06-10",
+  "framework": {
+    "tranche_types": {
+      "thematic_core": "Long-horizon position.",
+      "event_trade": "Catalyst-driven, exit by rule."
+    }
+  },
+  "tranche_classification": {
+    "AAPL": {
+      "tranche_type": "thematic_core",
+      "thematic_target_weight_pct": 22,
+      "current_weight_pct": 25.58,
+      "thesis_short": "Sample: durable franchise + buybacks.",
+      "thesis_break_triggers": [
+        "Services growth stalls",
+        "China share loss"
+      ]
+    },
+    "NVDA": {
+      "tranche_type": "thematic_core",
+      "thematic_target_weight_pct": 15,
+      "current_weight_pct": 12.09,
+      "thesis_short": "Sample: AI accelerator demand.",
+      "thesis_break_triggers": [
+        "Hyperscaler capex cut",
+        "Custom-ASIC displacement"
+      ]
+    },
+    "MSFT": {
+      "tranche_type": "thematic_core",
+      "thematic_target_weight_pct": 28,
+      "current_weight_pct": 30,
+      "thesis_short": "Sample: cloud + Copilot monetization.",
+      "thesis_break_triggers": [
+        "Azure decel",
+        "AI capex ROI doubts"
+      ]
+    }
+  }
+}

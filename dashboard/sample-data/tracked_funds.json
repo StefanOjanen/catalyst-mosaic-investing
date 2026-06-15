@@ -1,0 +1,28 @@
+{
+  "purpose": "Sample tracked funds (13F signal layer) for the demo dataset.",
+  "tracked_funds": [
+    {
+      "id": "sample-capital",
+      "name": "Sample Capital",
+      "manager": "J. Doe",
+      "aum_usd": 2000000000,
+      "strategy_summary": "Concentrated megacap-tech long-only.",
+      "latest_known_top_holdings_q2_2026": [
+        {
+          "ticker": "NVDA"
+        },
+        {
+          "ticker": "MSFT",
+          "delta": "ADDED"
+        },
+        {
+          "ticker": "AAPL"
+        },
+        {
+          "ticker": "GOOGL",
+          "delta": "NEW"
+        }
+      ]
+    }
+  ]
+}

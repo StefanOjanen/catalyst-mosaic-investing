@@ -1,0 +1,30 @@
+{
+  "framework": {
+    "purpose": "Track event-driven trades through entry -> catalyst -> exit-by-rule.",
+    "default_exit_rules_for_event_trades": {
+      "if_beat_+5_to_10pct_AH": "Trim 50% into gap-up.",
+      "if_miss_-5_to_10pct": "Full exit at next-day open."
+    },
+    "key_lesson": "Sample: trim event trades into the post-print gap; recoil is real."
+  },
+  "active_event_trades": [
+    {
+      "id": "NVDA-2026-08",
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "entry_date": "2026-06-01",
+      "entry_price_usd": 120,
+      "entry_shares": 10,
+      "catalyst_event": "Q2 FY27 earnings",
+      "catalyst_date": "2026-08-27",
+      "thesis_at_entry": "Sample pre-print position into the AI-capex print.",
+      "pre_committed_exit_rules": {
+        "if_beat_+5_to_10pct_AH": "Trim 5 sh into gap",
+        "if_miss_-5pct": "Full exit next open"
+      },
+      "status": "active"
+    }
+  ],
+  "closed_event_trades": [],
+  "concentration_catalyst_trades": []
+}

@@ -1,0 +1,66 @@
+{
+  "calendar_window": "2026-06 to 2026-12",
+  "last_updated": "2026-06-10",
+  "confidence_levels": {
+    "confirmed": "verified via IR",
+    "estimated": "inferred from cadence"
+  },
+  "calendar_upcoming": [
+    {
+      "date": "2026-07-24",
+      "ticker": "GOOGL",
+      "session": "AMC",
+      "period": "Q2 CY26",
+      "confidence": "confirmed",
+      "held": true,
+      "watchlist": false
+    },
+    {
+      "date": "2026-07-31",
+      "ticker": "AAPL",
+      "session": "AMC",
+      "period": "Q3 FY26",
+      "confidence": "confirmed",
+      "held": true,
+      "watchlist": false
+    },
+    {
+      "date": "2026-07-29",
+      "ticker": "MSFT",
+      "session": "AMC",
+      "period": "Q4 FY26",
+      "confidence": "confirmed",
+      "held": true
+    },
+    {
+      "date": "2026-08-27",
+      "ticker": "NVDA",
+      "session": "AMC",
+      "period": "Q2 FY27",
+      "confidence": "estimated",
+      "held": true
+    },
+    {
+      "date": "2026-08-04",
+      "ticker": "AMZN",
+      "session": "AMC",
+      "period": "Q2 CY26",
+      "confidence": "estimated",
+      "held": true
+    }
+  ],
+  "calendar_estimated_q4": [
+    {
+      "date_window": "2026-10-21 to 2026-10-30",
+      "ticker_group": "Megacap Q3 prints",
+      "tickers_in_universe": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "AMZN"
+      ],
+      "period": "Q3 CY26",
+      "confidence": "estimated"
+    }
+  ]
+}

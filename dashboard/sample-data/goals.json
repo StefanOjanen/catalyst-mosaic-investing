@@ -1,0 +1,19 @@
+{
+  "base_currency": "EUR",
+  "last_updated": "2026-06-10",
+  "active_goal_id": "q3-45k",
+  "goals": [
+    {
+      "id": "q3-45k",
+      "label": "€45k by end of Q3",
+      "type": "book_value",
+      "target_eur": 45000,
+      "target_date": "2026-09-30",
+      "baseline_eur": 36000,
+      "baseline_date": "2026-05-01",
+      "created": "2026-05-01",
+      "status": "active",
+      "note": "Sample goal for the demo dataset."
+    }
+  ]
+}

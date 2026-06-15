@@ -1,0 +1,140 @@
+{
+  "base_currency": "EUR",
+  "broker": "Sample Broker",
+  "account": "Demo account",
+  "last_updated": "2026-06-10",
+  "last_source": "Fictional sample data for the public demo — not a real portfolio.",
+  "fx_snapshot": {
+    "USD_EUR": 1.08
+  },
+  "totals": {
+    "market_value_equities_eur": 34814.81,
+    "cash_eur": 5000,
+    "total_book_eur": 39814.81,
+    "cost_basis_total_eur": 28842.59,
+    "unrealized_pnl_eur": 5972.22,
+    "unrealized_pnl_pct_on_cost": 20.71,
+    "realized_pnl_ytd_eur_estimate": 1250
+  },
+  "cash": {
+    "eur_total": 5000
+  },
+  "holdings": [
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "shares": 50,
+      "price_local": 220,
+      "price_ccy": "USD",
+      "market_value_eur": 10185.19,
+      "cost_basis_eur": 8333.33,
+      "avg_cost_per_share_eur": 166.67,
+      "unrealized_pnl_eur": 1851.85,
+      "unrealized_pnl_pct": 22.22,
+      "theme": [
+        "megacap",
+        "hardware"
+      ],
+      "tranche": "thematic_core",
+      "next_catalyst": "Q3 earnings ~late Jul",
+      "weight_pct_of_equity": 29.26,
+      "weight_pct_of_total": 25.58
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "shares": 30,
+      "price_local": 430,
+      "price_ccy": "USD",
+      "market_value_eur": 11944.44,
+      "cost_basis_eur": 10555.56,
+      "avg_cost_per_share_eur": 351.85,
+      "unrealized_pnl_eur": 1388.89,
+      "unrealized_pnl_pct": 13.16,
+      "theme": [
+        "megacap",
+        "cloud-ai"
+      ],
+      "tranche": "thematic_core",
+      "next_catalyst": "Q4 earnings ~late Jul",
+      "weight_pct_of_equity": 34.31,
+      "weight_pct_of_total": 30
+    },
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "shares": 40,
+      "price_local": 130,
+      "price_ccy": "USD",
+      "market_value_eur": 4814.81,
+      "cost_basis_eur": 3333.33,
+      "avg_cost_per_share_eur": 83.33,
+      "unrealized_pnl_eur": 1481.48,
+      "unrealized_pnl_pct": 44.44,
+      "theme": [
+        "ai-infra",
+        "semis"
+      ],
+      "tranche": "thematic_core",
+      "next_catalyst": "Q2 FY27 ~late Aug",
+      "weight_pct_of_equity": 13.83,
+      "weight_pct_of_total": 12.09
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet",
+      "shares": 25,
+      "price_local": 180,
+      "price_ccy": "USD",
+      "market_value_eur": 4166.67,
+      "cost_basis_eur": 3472.22,
+      "avg_cost_per_share_eur": 138.89,
+      "unrealized_pnl_eur": 694.44,
+      "unrealized_pnl_pct": 20,
+      "theme": [
+        "megacap",
+        "cloud-ai"
+      ],
+      "tranche": "thematic_core",
+      "next_catalyst": "",
+      "weight_pct_of_equity": 11.97,
+      "weight_pct_of_total": 10.47
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "shares": 20,
+      "price_local": 200,
+      "price_ccy": "USD",
+      "market_value_eur": 3703.7,
+      "cost_basis_eur": 3148.15,
+      "avg_cost_per_share_eur": 157.41,
+      "unrealized_pnl_eur": 555.56,
+      "unrealized_pnl_pct": 17.65,
+      "theme": [
+        "megacap",
+        "cloud-ai"
+      ],
+      "tranche": "thematic_core",
+      "next_catalyst": "",
+      "weight_pct_of_equity": 10.64,
+      "weight_pct_of_total": 9.3
+    }
+  ],
+  "concentration": {
+    "single_largest_position": "MSFT",
+    "single_largest_position_pct_of_total_book": 30,
+    "single_largest_position_pct_of_equity": 34.31,
+    "cash_pct_of_total_book": 12.56
+  },
+  "progress_to_eoj_target": {
+    "baseline_date": "2026-05-01",
+    "baseline_book_eur": 36000,
+    "current_book_eur": 39814.81,
+    "target_book_eur": 45000,
+    "target_date": "2026-09-30",
+    "gap_to_target_eur": 5185.19,
+    "gap_to_target_pct": 11.52,
+    "sessions_remaining_approx": 75
+  }
+}

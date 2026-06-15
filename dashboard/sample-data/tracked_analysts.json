@@ -1,0 +1,28 @@
+{
+  "purpose": "Sample tracked analysts for the demo dataset.",
+  "tracked_analysts": [
+    {
+      "id": "sample-analyst",
+      "name": "A. Analyst",
+      "firm": "Sample Securities",
+      "title": "Semiconductors, Managing Director",
+      "current_pt_baseline_2026_06": [
+        {
+          "ticker": "NVDA",
+          "rating": "Buy",
+          "pt_usd": 160
+        },
+        {
+          "ticker": "AMD",
+          "rating": "Neutral",
+          "pt_usd": 140
+        },
+        {
+          "ticker": "AVGO",
+          "rating": "Buy",
+          "pt_usd": 210
+        }
+      ]
+    }
+  ]
+}

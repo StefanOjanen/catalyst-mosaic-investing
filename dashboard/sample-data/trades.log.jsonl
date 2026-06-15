@@ -1,0 +1,2 @@
+{"event":"buy_confirmation","date_trade":"2026-05-02","ticker":"NVDA","name":"Nvidia","shares":10,"price_local":95,"price_ccy":"USD","net_eur":879.63,"pm_rationale":"Sample pre-print starter position."}
+{"event":"session_summary","logged_on":"2026-05-02","summary":"Sample session summary for the demo dataset — one starter buy logged."}
