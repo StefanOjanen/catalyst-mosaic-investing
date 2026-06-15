@@ -326,7 +326,7 @@ These are durable framework rules captured in memory and respected across sessio
 
 The framework is opinionated toward AI-infrastructure / AI-power / critical-materials thematic concentration in the default config, with a daily-cadence retail constraint. It works equally well for any other concentrated thesis with these substitutions:
 
-1. Replace `universe.json` with your thesis universe.
+1. Replace `portfolio.example.json` and `event_trades.example.json` with your own holdings and trade playbooks.
 2. Replace `universe.json` with your scout pool (sub-themes organized by thematic adjacency).
 3. Adjust concentration caps in `tranches.example.json` framework section to your risk tolerance.
 4. Adjust tracked funds and analysts to fit sector focus (energy-specialist book wants different funds than AI-infra book).
